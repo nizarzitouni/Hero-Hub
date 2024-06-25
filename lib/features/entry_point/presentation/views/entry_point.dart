@@ -18,7 +18,6 @@ class _EntryPointState extends State<EntryPoint> {
   final List<Widget> _screens = [
     const HomeView(),
     const HomeView(),
-    const HomeView(),
   ];
 
   void changeIndex(int index) => setState(() => currentIndex = index);
@@ -56,8 +55,7 @@ class _EntryPointState extends State<EntryPoint> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildNavItem(0, AssetsConstants.nbHomeActiveSVG, AssetsConstants.nbHomeInactiveSVG, 'Home'),
-          _buildNavItem(1, AssetsConstants.nbPresetsActiveSVG, AssetsConstants.nbPresetsInactiveSVG, 'Tips'),
-          _buildNavItem(2, AssetsConstants.nbProfileActiveSVG, AssetsConstants.nbProfileInactiveSVG, 'Settings'),
+          _buildNavItem(1, AssetsConstants.nbHomeActiveSVG, AssetsConstants.nbHomeInactiveSVG, 'Profile'),
         ],
       ),
     );
