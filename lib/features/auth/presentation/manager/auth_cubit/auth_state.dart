@@ -46,22 +46,24 @@ part 'auth_state.freezed.dart';
 
 @freezed
 class AuthState with _$AuthState {
-  const factory AuthState.initial() = _Initial;
+  const factory AuthState.initial({@Default(true) bool obscurePassword}) = _Initial;
 
-  // Login states
-  const factory AuthState.loginLoading() = LoginLoading;
-  const factory AuthState.loginSuccess() = LoginSuccess;
-  const factory AuthState.loginFailure(String errorMessage) = LoginFailure;
+  // Sign up states
+  const factory AuthState.signUpFailure(String errorMessage) = SignUpFailure;
+  const factory AuthState.signUpSuccess(UserModel user) = SignUpSuccess;
 
   // Sign in states
-  const factory AuthState.authLoading() = AuthLoading;
-  const factory AuthState.authSuccess(UserModel user) = AuthSuccess;
-  const factory AuthState.authFailure(String errorMessage) = AuthFailure;
+  const factory AuthState.signInFailure(String errorMessage) = SignInFailure;
+  const factory AuthState.signInSuccess(UserModel user) = SignInSuccess;
+
+  // Common loading state for sign up and sign in
+  const factory AuthState.authenticationLoading() = AuthenticationLoading;
 
   // Other states
   const factory AuthState.termsAndConditionUpdate() = TermsAndConditionUpdate;
-  const factory AuthState.obsecurePasswordText() = ObsecurePasswordText;
+  const factory AuthState.obscurePasswordText(bool isObscure) = ObscurePasswordText;
 
   // Sign out state
+  const factory AuthState.signOutFailure(String errorMessage) = SignOutFailure;
   const factory AuthState.signOutSuccess() = SignOutSuccess;
 }

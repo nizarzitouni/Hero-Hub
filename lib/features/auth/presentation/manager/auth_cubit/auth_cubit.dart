@@ -9,7 +9,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._authRepo) : super(const AuthState.initial());
   final AuthRepo _authRepo;
 
-  bool obscurePasswordTextValue = true;
+  bool _obscurePasswordTextValue = true;
   bool termsAndConditionCheckBoxValue = false;
 
   UserModel? userAccount;
@@ -18,30 +18,30 @@ class AuthCubit extends Cubit<AuthState> {
 // ... Sign In Funcs --------------------------
 
   Future<void> sigInWithEmailAndPassword({required String email, required String password}) async {
-    emit(const AuthState.authLoading());
+    emit(const AuthState.authenticationLoading());
     final result = await _authRepo.loginWithEmail(email: email, password: password);
     result.fold((failure) {
-      emit(AuthState.authFailure(failure.errMessage));
+      emit(AuthState.signInFailure(failure.errMessage));
     }, (user) {
-      emit(AuthState.authSuccess(user));
+      emit(AuthState.signInSuccess(user));
     });
   }
 
 // ... Signup Funcs using email and password ---------------------------------------------------------------------------------------------------------------------------------
 
   Future<void> signupWithEmailAndPassword({required String name, required String email, required String password}) async {
-    emit(const AuthState.authLoading());
+    emit(const AuthState.authenticationLoading());
     final result = await _authRepo.signupWithEmail(name: name, email: email, password: password);
     result.fold((failure) {
-      emit(AuthState.authFailure(failure.errMessage));
+      emit(AuthState.signUpFailure(failure.errMessage));
     }, (user) {
-      emit(AuthState.authSuccess(user));
+      emit(AuthState.signUpSuccess(user));
     });
   }
 
   void obscurePasswordText() {
-    obscurePasswordTextValue = !obscurePasswordTextValue;
-    emit(const AuthState.obsecurePasswordText());
+    _obscurePasswordTextValue = !_obscurePasswordTextValue;
+    emit(AuthState.obscurePasswordText(_obscurePasswordTextValue));
   }
 
   void updateTermsAndConditionCheckBox({required bool newValue}) {
@@ -51,11 +51,11 @@ class AuthCubit extends Cubit<AuthState> {
 // ... Sign out Funcs -------------------------------------------------------------------------------------------------------------------------------------------------------
 
   Future<void> signOut() async {
-    emit(const AuthState.authLoading());
+    emit(const AuthState.authenticationLoading());
     final result = await _authRepo.signOut();
     result.fold(
       (failure) {
-        emit(const AuthState.authFailure('Sign-out failed'));
+        emit(const AuthState.signOutFailure('Sign-out failed'));
       },
       (user) {
         userAccount = null;

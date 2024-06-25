@@ -5,6 +5,7 @@ abstract class Routes {
   static const kLoginView = '/login';
   // static const kAuthenticateView = '/authenticateView';
   static const kEntryPointView = '/entryPoint';
+  static const kProfileView = '/profile';
   static const kHomeView = '/homeView';
   // static const kSearchView = '/searchView';
 }

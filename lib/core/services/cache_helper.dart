@@ -52,4 +52,5 @@ class CacheHelper {
 
 abstract class CacheKeys {
   static const String onBoardingVisited = "onBoardingVisited";
+  static const String isLogedIn = "isLogedIn";
 }

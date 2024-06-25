@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hero_hub/core/extensions/context_extension.dart';
+import 'package:hero_hub/core/routes/routes.dart';
+import 'package:hero_hub/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:hero_hub/features/auth/presentation/manager/auth_cubit/auth_state.dart';
 import '../../../../core/assets_constants.dart';
 import '../../../../core/theme/app_pallete.dart';
+import '../../../../core/utility/show_snackbar.dart';
 import '../../../../core/widgets/svg_icon_widget.dart';
+import '../../../auth/presentation/functions/user_loged_in.dart';
 import '../../../home/presentation/views/home_view.dart';
+import '../../../profile/presentation/views/profile_view.dart';
 
 class EntryPoint extends StatefulWidget {
   const EntryPoint({super.key});
@@ -17,25 +25,37 @@ class _EntryPointState extends State<EntryPoint> {
 
   final List<Widget> _screens = [
     const HomeView(),
-    const HomeView(),
+    const ProfileView(),
   ];
 
   void changeIndex(int index) => setState(() => currentIndex = index);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppPallete.black, // Set the background color back to solid
-      body: Stack(
-        children: [
-          IndexedStack(index: currentIndex, children: _screens),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: _buildBottomNavigationBar(),
-          ),
-        ],
+    return BlocListener<AuthCubit, AuthState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          signOutSuccess: () {
+            userLogedIn(false);
+            context.pushReplacementNamed(Routes.kLoginView);
+          },
+          signOutFailure: (errorMessage) => showSnackBar(context: context, message: errorMessage),
+          orElse: () {},
+        );
+      },
+      child: Scaffold(
+        backgroundColor: AppPallete.black, // Set the background color back to solid
+        body: Stack(
+          children: [
+            IndexedStack(index: currentIndex, children: _screens),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: _buildBottomNavigationBar(),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -9,6 +9,7 @@ import '../core/routes/app_router.dart';
 import '../core/services/service_locator.dart';
 import '../core/theme/app_theme.dart';
 import '../core/widgets/filtred_image_widget.dart';
+import '../features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'app_cubit/app_cubit.dart';
 import 'connectivity_controller.dart';
 
@@ -27,6 +28,7 @@ class HeroHub extends StatelessWidget {
           if (value) {
             return MultiBlocProvider(
               providers: [
+                BlocProvider<AuthCubit>(create: (BuildContext context) => serviceLocator<AuthCubit>()),
                 BlocProvider<AppCubit>.value(value: serviceLocator<AppCubit>()),
               ],
               child: MaterialApp(

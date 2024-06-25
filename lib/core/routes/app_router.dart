@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hero_hub/features/profile/presentation/views/profile_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/entry_point/presentation/views/entry_point.dart';
@@ -41,6 +42,10 @@ abstract class AppRouter {
       case Routes.kHomeView:
         return MaterialPageRoute(
           builder: (_) => const HomeView(),
+        );
+      case Routes.kProfileView:
+        return MaterialPageRoute(
+          builder: (_) => const ProfileView(),
         );
 
       default:

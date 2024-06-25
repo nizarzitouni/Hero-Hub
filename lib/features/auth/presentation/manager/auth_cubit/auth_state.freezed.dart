@@ -18,43 +18,43 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) =>
@@ -62,43 +62,44 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) =>
@@ -127,6 +128,8 @@ abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool obscurePassword});
 }
 
 /// @nodoc
@@ -136,78 +139,104 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? obscurePassword = null,
+  }) {
+    return _then(_$InitialImpl(
+      obscurePassword: null == obscurePassword
+          ? _value.obscurePassword
+          : obscurePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+  const _$InitialImpl({this.obscurePassword = true});
+
+  @override
+  @JsonKey()
+  final bool obscurePassword;
 
   @override
   String toString() {
-    return 'AuthState.initial()';
+    return 'AuthState.initial(obscurePassword: $obscurePassword)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.obscurePassword, obscurePassword) ||
+                other.obscurePassword == obscurePassword));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, obscurePassword);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) {
-    return initial();
+    return initial(obscurePassword);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) {
-    return initial?.call();
+    return initial?.call(obscurePassword);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(obscurePassword);
     }
     return orElse();
   }
@@ -216,15 +245,16 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) {
     return initial(this);
@@ -234,14 +264,14 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) {
     return initial?.call(this);
@@ -251,14 +281,14 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) {
@@ -270,326 +300,29 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements AuthState {
-  const factory _Initial() = _$InitialImpl;
+  const factory _Initial({final bool obscurePassword}) = _$InitialImpl;
+
+  bool get obscurePassword;
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoginLoadingImplCopyWith<$Res> {
-  factory _$$LoginLoadingImplCopyWith(
-          _$LoginLoadingImpl value, $Res Function(_$LoginLoadingImpl) then) =
-      __$$LoginLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoginLoadingImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$LoginLoadingImpl>
-    implements _$$LoginLoadingImplCopyWith<$Res> {
-  __$$LoginLoadingImplCopyWithImpl(
-      _$LoginLoadingImpl _value, $Res Function(_$LoginLoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoginLoadingImpl implements LoginLoading {
-  const _$LoginLoadingImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.loginLoading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginLoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
-    required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
-    required TResult Function() signOutSuccess,
-  }) {
-    return loginLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
-    TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
-    TResult? Function()? signOutSuccess,
-  }) {
-    return loginLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
-    TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
-    TResult Function()? signOutSuccess,
-    required TResult orElse(),
-  }) {
-    if (loginLoading != null) {
-      return loginLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
-    required TResult Function(TermsAndConditionUpdate value)
-        termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
-    required TResult Function(SignOutSuccess value) signOutSuccess,
-  }) {
-    return loginLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
-    TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
-    TResult? Function(SignOutSuccess value)? signOutSuccess,
-  }) {
-    return loginLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
-    TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
-    TResult Function(SignOutSuccess value)? signOutSuccess,
-    required TResult orElse(),
-  }) {
-    if (loginLoading != null) {
-      return loginLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoginLoading implements AuthState {
-  const factory LoginLoading() = _$LoginLoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$LoginSuccessImplCopyWith<$Res> {
-  factory _$$LoginSuccessImplCopyWith(
-          _$LoginSuccessImpl value, $Res Function(_$LoginSuccessImpl) then) =
-      __$$LoginSuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoginSuccessImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$LoginSuccessImpl>
-    implements _$$LoginSuccessImplCopyWith<$Res> {
-  __$$LoginSuccessImplCopyWithImpl(
-      _$LoginSuccessImpl _value, $Res Function(_$LoginSuccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoginSuccessImpl implements LoginSuccess {
-  const _$LoginSuccessImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.loginSuccess()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
-    required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
-    required TResult Function() signOutSuccess,
-  }) {
-    return loginSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
-    TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
-    TResult? Function()? signOutSuccess,
-  }) {
-    return loginSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
-    TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
-    TResult Function()? signOutSuccess,
-    required TResult orElse(),
-  }) {
-    if (loginSuccess != null) {
-      return loginSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
-    required TResult Function(TermsAndConditionUpdate value)
-        termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
-    required TResult Function(SignOutSuccess value) signOutSuccess,
-  }) {
-    return loginSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
-    TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
-    TResult? Function(SignOutSuccess value)? signOutSuccess,
-  }) {
-    return loginSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
-    TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
-    TResult Function(SignOutSuccess value)? signOutSuccess,
-    required TResult orElse(),
-  }) {
-    if (loginSuccess != null) {
-      return loginSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoginSuccess implements AuthState {
-  const factory LoginSuccess() = _$LoginSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$LoginFailureImplCopyWith<$Res> {
-  factory _$$LoginFailureImplCopyWith(
-          _$LoginFailureImpl value, $Res Function(_$LoginFailureImpl) then) =
-      __$$LoginFailureImplCopyWithImpl<$Res>;
+abstract class _$$SignUpFailureImplCopyWith<$Res> {
+  factory _$$SignUpFailureImplCopyWith(
+          _$SignUpFailureImpl value, $Res Function(_$SignUpFailureImpl) then) =
+      __$$SignUpFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
-class __$$LoginFailureImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$LoginFailureImpl>
-    implements _$$LoginFailureImplCopyWith<$Res> {
-  __$$LoginFailureImplCopyWithImpl(
-      _$LoginFailureImpl _value, $Res Function(_$LoginFailureImpl) _then)
+class __$$SignUpFailureImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SignUpFailureImpl>
+    implements _$$SignUpFailureImplCopyWith<$Res> {
+  __$$SignUpFailureImplCopyWithImpl(
+      _$SignUpFailureImpl _value, $Res Function(_$SignUpFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -597,7 +330,7 @@ class __$$LoginFailureImplCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = null,
   }) {
-    return _then(_$LoginFailureImpl(
+    return _then(_$SignUpFailureImpl(
       null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -608,22 +341,22 @@ class __$$LoginFailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginFailureImpl implements LoginFailure {
-  const _$LoginFailureImpl(this.errorMessage);
+class _$SignUpFailureImpl implements SignUpFailure {
+  const _$SignUpFailureImpl(this.errorMessage);
 
   @override
   final String errorMessage;
 
   @override
   String toString() {
-    return 'AuthState.loginFailure(errorMessage: $errorMessage)';
+    return 'AuthState.signUpFailure(errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginFailureImpl &&
+            other is _$SignUpFailureImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -634,60 +367,60 @@ class _$LoginFailureImpl implements LoginFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginFailureImplCopyWith<_$LoginFailureImpl> get copyWith =>
-      __$$LoginFailureImplCopyWithImpl<_$LoginFailureImpl>(this, _$identity);
+  _$$SignUpFailureImplCopyWith<_$SignUpFailureImpl> get copyWith =>
+      __$$SignUpFailureImplCopyWithImpl<_$SignUpFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) {
-    return loginFailure(errorMessage);
+    return signUpFailure(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) {
-    return loginFailure?.call(errorMessage);
+    return signUpFailure?.call(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (loginFailure != null) {
-      return loginFailure(errorMessage);
+    if (signUpFailure != null) {
+      return signUpFailure(errorMessage);
     }
     return orElse();
   }
@@ -696,234 +429,84 @@ class _$LoginFailureImpl implements LoginFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) {
-    return loginFailure(this);
+    return signUpFailure(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) {
-    return loginFailure?.call(this);
+    return signUpFailure?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (loginFailure != null) {
-      return loginFailure(this);
+    if (signUpFailure != null) {
+      return signUpFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class LoginFailure implements AuthState {
-  const factory LoginFailure(final String errorMessage) = _$LoginFailureImpl;
+abstract class SignUpFailure implements AuthState {
+  const factory SignUpFailure(final String errorMessage) = _$SignUpFailureImpl;
 
   String get errorMessage;
   @JsonKey(ignore: true)
-  _$$LoginFailureImplCopyWith<_$LoginFailureImpl> get copyWith =>
+  _$$SignUpFailureImplCopyWith<_$SignUpFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AuthLoadingImplCopyWith<$Res> {
-  factory _$$AuthLoadingImplCopyWith(
-          _$AuthLoadingImpl value, $Res Function(_$AuthLoadingImpl) then) =
-      __$$AuthLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthLoadingImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthLoadingImpl>
-    implements _$$AuthLoadingImplCopyWith<$Res> {
-  __$$AuthLoadingImplCopyWithImpl(
-      _$AuthLoadingImpl _value, $Res Function(_$AuthLoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthLoadingImpl implements AuthLoading {
-  const _$AuthLoadingImpl();
-
-  @override
-  String toString() {
-    return 'AuthState.authLoading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthLoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
-    required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
-    required TResult Function() signOutSuccess,
-  }) {
-    return authLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
-    TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
-    TResult? Function()? signOutSuccess,
-  }) {
-    return authLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
-    TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
-    TResult Function()? signOutSuccess,
-    required TResult orElse(),
-  }) {
-    if (authLoading != null) {
-      return authLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
-    required TResult Function(TermsAndConditionUpdate value)
-        termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
-    required TResult Function(SignOutSuccess value) signOutSuccess,
-  }) {
-    return authLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
-    TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
-    TResult? Function(SignOutSuccess value)? signOutSuccess,
-  }) {
-    return authLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
-    TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
-    TResult Function(SignOutSuccess value)? signOutSuccess,
-    required TResult orElse(),
-  }) {
-    if (authLoading != null) {
-      return authLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthLoading implements AuthState {
-  const factory AuthLoading() = _$AuthLoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthSuccessImplCopyWith<$Res> {
-  factory _$$AuthSuccessImplCopyWith(
-          _$AuthSuccessImpl value, $Res Function(_$AuthSuccessImpl) then) =
-      __$$AuthSuccessImplCopyWithImpl<$Res>;
+abstract class _$$SignUpSuccessImplCopyWith<$Res> {
+  factory _$$SignUpSuccessImplCopyWith(
+          _$SignUpSuccessImpl value, $Res Function(_$SignUpSuccessImpl) then) =
+      __$$SignUpSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UserModel user});
 }
 
 /// @nodoc
-class __$$AuthSuccessImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthSuccessImpl>
-    implements _$$AuthSuccessImplCopyWith<$Res> {
-  __$$AuthSuccessImplCopyWithImpl(
-      _$AuthSuccessImpl _value, $Res Function(_$AuthSuccessImpl) _then)
+class __$$SignUpSuccessImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SignUpSuccessImpl>
+    implements _$$SignUpSuccessImplCopyWith<$Res> {
+  __$$SignUpSuccessImplCopyWithImpl(
+      _$SignUpSuccessImpl _value, $Res Function(_$SignUpSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -931,7 +514,7 @@ class __$$AuthSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
   }) {
-    return _then(_$AuthSuccessImpl(
+    return _then(_$SignUpSuccessImpl(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -942,22 +525,22 @@ class __$$AuthSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthSuccessImpl implements AuthSuccess {
-  const _$AuthSuccessImpl(this.user);
+class _$SignUpSuccessImpl implements SignUpSuccess {
+  const _$SignUpSuccessImpl(this.user);
 
   @override
   final UserModel user;
 
   @override
   String toString() {
-    return 'AuthState.authSuccess(user: $user)';
+    return 'AuthState.signUpSuccess(user: $user)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthSuccessImpl &&
+            other is _$SignUpSuccessImpl &&
             (identical(other.user, user) || other.user == user));
   }
 
@@ -967,60 +550,60 @@ class _$AuthSuccessImpl implements AuthSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthSuccessImplCopyWith<_$AuthSuccessImpl> get copyWith =>
-      __$$AuthSuccessImplCopyWithImpl<_$AuthSuccessImpl>(this, _$identity);
+  _$$SignUpSuccessImplCopyWith<_$SignUpSuccessImpl> get copyWith =>
+      __$$SignUpSuccessImplCopyWithImpl<_$SignUpSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) {
-    return authSuccess(user);
+    return signUpSuccess(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) {
-    return authSuccess?.call(user);
+    return signUpSuccess?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (authSuccess != null) {
-      return authSuccess(user);
+    if (signUpSuccess != null) {
+      return signUpSuccess(user);
     }
     return orElse();
   }
@@ -1029,83 +612,84 @@ class _$AuthSuccessImpl implements AuthSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) {
-    return authSuccess(this);
+    return signUpSuccess(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) {
-    return authSuccess?.call(this);
+    return signUpSuccess?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (authSuccess != null) {
-      return authSuccess(this);
+    if (signUpSuccess != null) {
+      return signUpSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class AuthSuccess implements AuthState {
-  const factory AuthSuccess(final UserModel user) = _$AuthSuccessImpl;
+abstract class SignUpSuccess implements AuthState {
+  const factory SignUpSuccess(final UserModel user) = _$SignUpSuccessImpl;
 
   UserModel get user;
   @JsonKey(ignore: true)
-  _$$AuthSuccessImplCopyWith<_$AuthSuccessImpl> get copyWith =>
+  _$$SignUpSuccessImplCopyWith<_$SignUpSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AuthFailureImplCopyWith<$Res> {
-  factory _$$AuthFailureImplCopyWith(
-          _$AuthFailureImpl value, $Res Function(_$AuthFailureImpl) then) =
-      __$$AuthFailureImplCopyWithImpl<$Res>;
+abstract class _$$SignInFailureImplCopyWith<$Res> {
+  factory _$$SignInFailureImplCopyWith(
+          _$SignInFailureImpl value, $Res Function(_$SignInFailureImpl) then) =
+      __$$SignInFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
-class __$$AuthFailureImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthFailureImpl>
-    implements _$$AuthFailureImplCopyWith<$Res> {
-  __$$AuthFailureImplCopyWithImpl(
-      _$AuthFailureImpl _value, $Res Function(_$AuthFailureImpl) _then)
+class __$$SignInFailureImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SignInFailureImpl>
+    implements _$$SignInFailureImplCopyWith<$Res> {
+  __$$SignInFailureImplCopyWithImpl(
+      _$SignInFailureImpl _value, $Res Function(_$SignInFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1113,7 +697,7 @@ class __$$AuthFailureImplCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = null,
   }) {
-    return _then(_$AuthFailureImpl(
+    return _then(_$SignInFailureImpl(
       null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -1124,22 +708,22 @@ class __$$AuthFailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthFailureImpl implements AuthFailure {
-  const _$AuthFailureImpl(this.errorMessage);
+class _$SignInFailureImpl implements SignInFailure {
+  const _$SignInFailureImpl(this.errorMessage);
 
   @override
   final String errorMessage;
 
   @override
   String toString() {
-    return 'AuthState.authFailure(errorMessage: $errorMessage)';
+    return 'AuthState.signInFailure(errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthFailureImpl &&
+            other is _$SignInFailureImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -1150,60 +734,60 @@ class _$AuthFailureImpl implements AuthFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthFailureImplCopyWith<_$AuthFailureImpl> get copyWith =>
-      __$$AuthFailureImplCopyWithImpl<_$AuthFailureImpl>(this, _$identity);
+  _$$SignInFailureImplCopyWith<_$SignInFailureImpl> get copyWith =>
+      __$$SignInFailureImplCopyWithImpl<_$SignInFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) {
-    return authFailure(errorMessage);
+    return signInFailure(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) {
-    return authFailure?.call(errorMessage);
+    return signInFailure?.call(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (authFailure != null) {
-      return authFailure(errorMessage);
+    if (signInFailure != null) {
+      return signInFailure(errorMessage);
     }
     return orElse();
   }
@@ -1212,66 +796,404 @@ class _$AuthFailureImpl implements AuthFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) {
-    return authFailure(this);
+    return signInFailure(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) {
-    return authFailure?.call(this);
+    return signInFailure?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (authFailure != null) {
-      return authFailure(this);
+    if (signInFailure != null) {
+      return signInFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class AuthFailure implements AuthState {
-  const factory AuthFailure(final String errorMessage) = _$AuthFailureImpl;
+abstract class SignInFailure implements AuthState {
+  const factory SignInFailure(final String errorMessage) = _$SignInFailureImpl;
 
   String get errorMessage;
   @JsonKey(ignore: true)
-  _$$AuthFailureImplCopyWith<_$AuthFailureImpl> get copyWith =>
+  _$$SignInFailureImplCopyWith<_$SignInFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SignInSuccessImplCopyWith<$Res> {
+  factory _$$SignInSuccessImplCopyWith(
+          _$SignInSuccessImpl value, $Res Function(_$SignInSuccessImpl) then) =
+      __$$SignInSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user});
+}
+
+/// @nodoc
+class __$$SignInSuccessImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SignInSuccessImpl>
+    implements _$$SignInSuccessImplCopyWith<$Res> {
+  __$$SignInSuccessImplCopyWithImpl(
+      _$SignInSuccessImpl _value, $Res Function(_$SignInSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$SignInSuccessImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignInSuccessImpl implements SignInSuccess {
+  const _$SignInSuccessImpl(this.user);
+
+  @override
+  final UserModel user;
+
+  @override
+  String toString() {
+    return 'AuthState.signInSuccess(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignInSuccessImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignInSuccessImplCopyWith<_$SignInSuccessImpl> get copyWith =>
+      __$$SignInSuccessImplCopyWithImpl<_$SignInSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
+    required TResult Function() termsAndConditionUpdate,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
+    required TResult Function() signOutSuccess,
+  }) {
+    return signInSuccess(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
+    TResult? Function()? termsAndConditionUpdate,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
+    TResult? Function()? signOutSuccess,
+  }) {
+    return signInSuccess?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
+    TResult Function()? termsAndConditionUpdate,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
+    TResult Function()? signOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (signInSuccess != null) {
+      return signInSuccess(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
+    required TResult Function(TermsAndConditionUpdate value)
+        termsAndConditionUpdate,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
+    required TResult Function(SignOutSuccess value) signOutSuccess,
+  }) {
+    return signInSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
+    TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
+    TResult? Function(SignOutSuccess value)? signOutSuccess,
+  }) {
+    return signInSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
+    TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
+    TResult Function(SignOutSuccess value)? signOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (signInSuccess != null) {
+      return signInSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SignInSuccess implements AuthState {
+  const factory SignInSuccess(final UserModel user) = _$SignInSuccessImpl;
+
+  UserModel get user;
+  @JsonKey(ignore: true)
+  _$$SignInSuccessImplCopyWith<_$SignInSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AuthenticationLoadingImplCopyWith<$Res> {
+  factory _$$AuthenticationLoadingImplCopyWith(
+          _$AuthenticationLoadingImpl value,
+          $Res Function(_$AuthenticationLoadingImpl) then) =
+      __$$AuthenticationLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthenticationLoadingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthenticationLoadingImpl>
+    implements _$$AuthenticationLoadingImplCopyWith<$Res> {
+  __$$AuthenticationLoadingImplCopyWithImpl(_$AuthenticationLoadingImpl _value,
+      $Res Function(_$AuthenticationLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthenticationLoadingImpl implements AuthenticationLoading {
+  const _$AuthenticationLoadingImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.authenticationLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthenticationLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
+    required TResult Function() termsAndConditionUpdate,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
+    required TResult Function() signOutSuccess,
+  }) {
+    return authenticationLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
+    TResult? Function()? termsAndConditionUpdate,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
+    TResult? Function()? signOutSuccess,
+  }) {
+    return authenticationLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
+    TResult Function()? termsAndConditionUpdate,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
+    TResult Function()? signOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (authenticationLoading != null) {
+      return authenticationLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
+    required TResult Function(TermsAndConditionUpdate value)
+        termsAndConditionUpdate,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
+    required TResult Function(SignOutSuccess value) signOutSuccess,
+  }) {
+    return authenticationLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
+    TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
+    TResult? Function(SignOutSuccess value)? signOutSuccess,
+  }) {
+    return authenticationLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
+    TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
+    TResult Function(SignOutSuccess value)? signOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (authenticationLoading != null) {
+      return authenticationLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthenticationLoading implements AuthState {
+  const factory AuthenticationLoading() = _$AuthenticationLoadingImpl;
 }
 
 /// @nodoc
@@ -1315,15 +1237,15 @@ class _$TermsAndConditionUpdateImpl implements TermsAndConditionUpdate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) {
     return termsAndConditionUpdate();
@@ -1332,15 +1254,15 @@ class _$TermsAndConditionUpdateImpl implements TermsAndConditionUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) {
     return termsAndConditionUpdate?.call();
@@ -1349,15 +1271,15 @@ class _$TermsAndConditionUpdateImpl implements TermsAndConditionUpdate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) {
@@ -1371,15 +1293,16 @@ class _$TermsAndConditionUpdateImpl implements TermsAndConditionUpdate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) {
     return termsAndConditionUpdate(this);
@@ -1389,14 +1312,14 @@ class _$TermsAndConditionUpdateImpl implements TermsAndConditionUpdate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) {
     return termsAndConditionUpdate?.call(this);
@@ -1406,14 +1329,14 @@ class _$TermsAndConditionUpdateImpl implements TermsAndConditionUpdate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) {
@@ -1429,92 +1352,119 @@ abstract class TermsAndConditionUpdate implements AuthState {
 }
 
 /// @nodoc
-abstract class _$$ObsecurePasswordTextImplCopyWith<$Res> {
-  factory _$$ObsecurePasswordTextImplCopyWith(_$ObsecurePasswordTextImpl value,
-          $Res Function(_$ObsecurePasswordTextImpl) then) =
-      __$$ObsecurePasswordTextImplCopyWithImpl<$Res>;
+abstract class _$$ObscurePasswordTextImplCopyWith<$Res> {
+  factory _$$ObscurePasswordTextImplCopyWith(_$ObscurePasswordTextImpl value,
+          $Res Function(_$ObscurePasswordTextImpl) then) =
+      __$$ObscurePasswordTextImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isObscure});
 }
 
 /// @nodoc
-class __$$ObsecurePasswordTextImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$ObsecurePasswordTextImpl>
-    implements _$$ObsecurePasswordTextImplCopyWith<$Res> {
-  __$$ObsecurePasswordTextImplCopyWithImpl(_$ObsecurePasswordTextImpl _value,
-      $Res Function(_$ObsecurePasswordTextImpl) _then)
+class __$$ObscurePasswordTextImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$ObscurePasswordTextImpl>
+    implements _$$ObscurePasswordTextImplCopyWith<$Res> {
+  __$$ObscurePasswordTextImplCopyWithImpl(_$ObscurePasswordTextImpl _value,
+      $Res Function(_$ObscurePasswordTextImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isObscure = null,
+  }) {
+    return _then(_$ObscurePasswordTextImpl(
+      null == isObscure
+          ? _value.isObscure
+          : isObscure // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$ObsecurePasswordTextImpl implements ObsecurePasswordText {
-  const _$ObsecurePasswordTextImpl();
+class _$ObscurePasswordTextImpl implements ObscurePasswordText {
+  const _$ObscurePasswordTextImpl(this.isObscure);
+
+  @override
+  final bool isObscure;
 
   @override
   String toString() {
-    return 'AuthState.obsecurePasswordText()';
+    return 'AuthState.obscurePasswordText(isObscure: $isObscure)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ObsecurePasswordTextImpl);
+            other is _$ObscurePasswordTextImpl &&
+            (identical(other.isObscure, isObscure) ||
+                other.isObscure == isObscure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isObscure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ObscurePasswordTextImplCopyWith<_$ObscurePasswordTextImpl> get copyWith =>
+      __$$ObscurePasswordTextImplCopyWithImpl<_$ObscurePasswordTextImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) {
-    return obsecurePasswordText();
+    return obscurePasswordText(isObscure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) {
-    return obsecurePasswordText?.call();
+    return obscurePasswordText?.call(isObscure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (obsecurePasswordText != null) {
-      return obsecurePasswordText();
+    if (obscurePasswordText != null) {
+      return obscurePasswordText(isObscure);
     }
     return orElse();
   }
@@ -1523,61 +1473,254 @@ class _$ObsecurePasswordTextImpl implements ObsecurePasswordText {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) {
-    return obsecurePasswordText(this);
+    return obscurePasswordText(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) {
-    return obsecurePasswordText?.call(this);
+    return obscurePasswordText?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) {
-    if (obsecurePasswordText != null) {
-      return obsecurePasswordText(this);
+    if (obscurePasswordText != null) {
+      return obscurePasswordText(this);
     }
     return orElse();
   }
 }
 
-abstract class ObsecurePasswordText implements AuthState {
-  const factory ObsecurePasswordText() = _$ObsecurePasswordTextImpl;
+abstract class ObscurePasswordText implements AuthState {
+  const factory ObscurePasswordText(final bool isObscure) =
+      _$ObscurePasswordTextImpl;
+
+  bool get isObscure;
+  @JsonKey(ignore: true)
+  _$$ObscurePasswordTextImplCopyWith<_$ObscurePasswordTextImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SignOutFailureImplCopyWith<$Res> {
+  factory _$$SignOutFailureImplCopyWith(_$SignOutFailureImpl value,
+          $Res Function(_$SignOutFailureImpl) then) =
+      __$$SignOutFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$SignOutFailureImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SignOutFailureImpl>
+    implements _$$SignOutFailureImplCopyWith<$Res> {
+  __$$SignOutFailureImplCopyWithImpl(
+      _$SignOutFailureImpl _value, $Res Function(_$SignOutFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$SignOutFailureImpl(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignOutFailureImpl implements SignOutFailure {
+  const _$SignOutFailureImpl(this.errorMessage);
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AuthState.signOutFailure(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignOutFailureImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignOutFailureImplCopyWith<_$SignOutFailureImpl> get copyWith =>
+      __$$SignOutFailureImplCopyWithImpl<_$SignOutFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
+    required TResult Function() termsAndConditionUpdate,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
+    required TResult Function() signOutSuccess,
+  }) {
+    return signOutFailure(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
+    TResult? Function()? termsAndConditionUpdate,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
+    TResult? Function()? signOutSuccess,
+  }) {
+    return signOutFailure?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
+    TResult Function()? termsAndConditionUpdate,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
+    TResult Function()? signOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (signOutFailure != null) {
+      return signOutFailure(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
+    required TResult Function(TermsAndConditionUpdate value)
+        termsAndConditionUpdate,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
+    required TResult Function(SignOutSuccess value) signOutSuccess,
+  }) {
+    return signOutFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
+    TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
+    TResult? Function(SignOutSuccess value)? signOutSuccess,
+  }) {
+    return signOutFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
+    TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
+    TResult Function(SignOutSuccess value)? signOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (signOutFailure != null) {
+      return signOutFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SignOutFailure implements AuthState {
+  const factory SignOutFailure(final String errorMessage) =
+      _$SignOutFailureImpl;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$SignOutFailureImplCopyWith<_$SignOutFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1618,15 +1761,15 @@ class _$SignOutSuccessImpl implements SignOutSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loginLoading,
-    required TResult Function() loginSuccess,
-    required TResult Function(String errorMessage) loginFailure,
-    required TResult Function() authLoading,
-    required TResult Function(UserModel user) authSuccess,
-    required TResult Function(String errorMessage) authFailure,
+    required TResult Function(bool obscurePassword) initial,
+    required TResult Function(String errorMessage) signUpFailure,
+    required TResult Function(UserModel user) signUpSuccess,
+    required TResult Function(String errorMessage) signInFailure,
+    required TResult Function(UserModel user) signInSuccess,
+    required TResult Function() authenticationLoading,
     required TResult Function() termsAndConditionUpdate,
-    required TResult Function() obsecurePasswordText,
+    required TResult Function(bool isObscure) obscurePasswordText,
+    required TResult Function(String errorMessage) signOutFailure,
     required TResult Function() signOutSuccess,
   }) {
     return signOutSuccess();
@@ -1635,15 +1778,15 @@ class _$SignOutSuccessImpl implements SignOutSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loginLoading,
-    TResult? Function()? loginSuccess,
-    TResult? Function(String errorMessage)? loginFailure,
-    TResult? Function()? authLoading,
-    TResult? Function(UserModel user)? authSuccess,
-    TResult? Function(String errorMessage)? authFailure,
+    TResult? Function(bool obscurePassword)? initial,
+    TResult? Function(String errorMessage)? signUpFailure,
+    TResult? Function(UserModel user)? signUpSuccess,
+    TResult? Function(String errorMessage)? signInFailure,
+    TResult? Function(UserModel user)? signInSuccess,
+    TResult? Function()? authenticationLoading,
     TResult? Function()? termsAndConditionUpdate,
-    TResult? Function()? obsecurePasswordText,
+    TResult? Function(bool isObscure)? obscurePasswordText,
+    TResult? Function(String errorMessage)? signOutFailure,
     TResult? Function()? signOutSuccess,
   }) {
     return signOutSuccess?.call();
@@ -1652,15 +1795,15 @@ class _$SignOutSuccessImpl implements SignOutSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loginLoading,
-    TResult Function()? loginSuccess,
-    TResult Function(String errorMessage)? loginFailure,
-    TResult Function()? authLoading,
-    TResult Function(UserModel user)? authSuccess,
-    TResult Function(String errorMessage)? authFailure,
+    TResult Function(bool obscurePassword)? initial,
+    TResult Function(String errorMessage)? signUpFailure,
+    TResult Function(UserModel user)? signUpSuccess,
+    TResult Function(String errorMessage)? signInFailure,
+    TResult Function(UserModel user)? signInSuccess,
+    TResult Function()? authenticationLoading,
     TResult Function()? termsAndConditionUpdate,
-    TResult Function()? obsecurePasswordText,
+    TResult Function(bool isObscure)? obscurePasswordText,
+    TResult Function(String errorMessage)? signOutFailure,
     TResult Function()? signOutSuccess,
     required TResult orElse(),
   }) {
@@ -1674,15 +1817,16 @@ class _$SignOutSuccessImpl implements SignOutSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(LoginLoading value) loginLoading,
-    required TResult Function(LoginSuccess value) loginSuccess,
-    required TResult Function(LoginFailure value) loginFailure,
-    required TResult Function(AuthLoading value) authLoading,
-    required TResult Function(AuthSuccess value) authSuccess,
-    required TResult Function(AuthFailure value) authFailure,
+    required TResult Function(SignUpFailure value) signUpFailure,
+    required TResult Function(SignUpSuccess value) signUpSuccess,
+    required TResult Function(SignInFailure value) signInFailure,
+    required TResult Function(SignInSuccess value) signInSuccess,
+    required TResult Function(AuthenticationLoading value)
+        authenticationLoading,
     required TResult Function(TermsAndConditionUpdate value)
         termsAndConditionUpdate,
-    required TResult Function(ObsecurePasswordText value) obsecurePasswordText,
+    required TResult Function(ObscurePasswordText value) obscurePasswordText,
+    required TResult Function(SignOutFailure value) signOutFailure,
     required TResult Function(SignOutSuccess value) signOutSuccess,
   }) {
     return signOutSuccess(this);
@@ -1692,14 +1836,14 @@ class _$SignOutSuccessImpl implements SignOutSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(LoginLoading value)? loginLoading,
-    TResult? Function(LoginSuccess value)? loginSuccess,
-    TResult? Function(LoginFailure value)? loginFailure,
-    TResult? Function(AuthLoading value)? authLoading,
-    TResult? Function(AuthSuccess value)? authSuccess,
-    TResult? Function(AuthFailure value)? authFailure,
+    TResult? Function(SignUpFailure value)? signUpFailure,
+    TResult? Function(SignUpSuccess value)? signUpSuccess,
+    TResult? Function(SignInFailure value)? signInFailure,
+    TResult? Function(SignInSuccess value)? signInSuccess,
+    TResult? Function(AuthenticationLoading value)? authenticationLoading,
     TResult? Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult? Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult? Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult? Function(SignOutFailure value)? signOutFailure,
     TResult? Function(SignOutSuccess value)? signOutSuccess,
   }) {
     return signOutSuccess?.call(this);
@@ -1709,14 +1853,14 @@ class _$SignOutSuccessImpl implements SignOutSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(LoginLoading value)? loginLoading,
-    TResult Function(LoginSuccess value)? loginSuccess,
-    TResult Function(LoginFailure value)? loginFailure,
-    TResult Function(AuthLoading value)? authLoading,
-    TResult Function(AuthSuccess value)? authSuccess,
-    TResult Function(AuthFailure value)? authFailure,
+    TResult Function(SignUpFailure value)? signUpFailure,
+    TResult Function(SignUpSuccess value)? signUpSuccess,
+    TResult Function(SignInFailure value)? signInFailure,
+    TResult Function(SignInSuccess value)? signInSuccess,
+    TResult Function(AuthenticationLoading value)? authenticationLoading,
     TResult Function(TermsAndConditionUpdate value)? termsAndConditionUpdate,
-    TResult Function(ObsecurePasswordText value)? obsecurePasswordText,
+    TResult Function(ObscurePasswordText value)? obscurePasswordText,
+    TResult Function(SignOutFailure value)? signOutFailure,
     TResult Function(SignOutSuccess value)? signOutSuccess,
     required TResult orElse(),
   }) {
