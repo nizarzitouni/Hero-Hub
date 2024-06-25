@@ -24,10 +24,15 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     initSlidingAnimation();
 
     final isOnBoardingVisitedBool = serviceLocator<CacheHelper>().getData(key: CacheKeys.onBoardingVisited) as bool? ?? false;
+    final isLogedIn = serviceLocator<CacheHelper>().getData(key: CacheKeys.isLogedIn) as bool? ?? false;
 
     Future.delayed(const Duration(seconds: 3), () {
       if (isOnBoardingVisitedBool) {
-        context.pushReplacementNamed(Routes.kEntryPointView);
+        if (isLogedIn) {
+          context.pushReplacementNamed(Routes.kEntryPointView);
+        } else {
+          context.pushReplacementNamed(Routes.kLoginView);
+        }
       } else {
         context.pushReplacementNamed(Routes.kOnboardingView);
       }

@@ -5,6 +5,7 @@ import '../theme/app_pallete.dart';
 class CustomFilledButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final double? fontSize;
   final Color? backgroundColor;
   final Color? textColor;
   final double? width;
@@ -18,6 +19,7 @@ class CustomFilledButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.backgroundColor,
+    this.fontSize = 14,
     this.textColor,
     this.width,
     this.height,
@@ -31,7 +33,7 @@ class CustomFilledButton extends StatelessWidget {
     Widget button = ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? AppPallete.success.withOpacity(.6),
+        backgroundColor: backgroundColor ?? AppPallete.primary.withOpacity(.6),
         foregroundColor: textColor ?? Colors.white,
         padding: padding,
         shape: RoundedRectangleBorder(
@@ -48,8 +50,9 @@ class CustomFilledButton extends StatelessWidget {
           ],
           Text(
             text,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
+              fontSize: fontSize,
             ),
           ),
         ],

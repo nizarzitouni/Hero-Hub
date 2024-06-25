@@ -20,8 +20,8 @@ class SlidingLogoText extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 40,
-                fontWeight: FontWeight.w400,
-                color: AppPallete.white,
+                fontWeight: FontWeight.bold,
+                color: AppPallete.primary,
                 fontFamily: "Pacifico",
               ),
             ),

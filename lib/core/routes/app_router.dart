@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hero_hub/features/profile/presentation/views/profile_view.dart';
+import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/entry_point/presentation/views/entry_point.dart';
 import '../../features/home/presentation/views/home_view.dart';
 
@@ -17,14 +20,14 @@ abstract class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const OnBoardingView(),
         );
-      // case kLoginView:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const LoginView(),
-      //   );
-      // case kSignUpView:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const SignupView(),
-      //   );
+      case Routes.kLoginView:
+        return MaterialPageRoute(
+          builder: (_) => const LoginView(),
+        );
+      case Routes.kSignUpView:
+        return MaterialPageRoute(
+          builder: (_) => const SignupView(),
+        );
 
       // case Routes.kAuthenticateView:
       //   return MaterialPageRoute(
@@ -39,6 +42,10 @@ abstract class AppRouter {
       case Routes.kHomeView:
         return MaterialPageRoute(
           builder: (_) => const HomeView(),
+        );
+      case Routes.kProfileView:
+        return MaterialPageRoute(
+          builder: (_) => const ProfileView(),
         );
 
       default:
