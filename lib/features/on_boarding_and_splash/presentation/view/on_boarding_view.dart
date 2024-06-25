@@ -11,7 +11,8 @@ import '../../../../core/utility/spacing.dart';
 import '../../../../core/widgets/my_buttons.dart';
 import '../../data/on_boarding_item.dart';
 import '../functions/on_boarding_visited.dart';
-import 'widgets/in_boarding_widget/wallet.dart';
+import 'widgets/on_boarding_widget/page_indicator.dart';
+import 'widgets/on_boarding_widget/wallet.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -137,10 +138,7 @@ class _OnBoardingViewState extends State<OnBoardingView> with SingleTickerProvid
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ..._buildItemInfo(activeIndex: activeIndex),
-                  PageIndicator(
-                    length: onBoardingItems.length,
-                    activeIndex: activeIndex,
-                  ),
+                  PageIndicator(length: onBoardingItems.length, activeIndex: activeIndex),
 
                   //Get Started Btn
                   CustomFilledButton(
@@ -151,6 +149,7 @@ class _OnBoardingViewState extends State<OnBoardingView> with SingleTickerProvid
                     text: 'Get Started!',
                     borderRadius: 10,
                     backgroundColor: AppPallete.primary,
+                    height: 45,
                   ),
                 ],
               ),
@@ -181,50 +180,5 @@ class _OnBoardingViewState extends State<OnBoardingView> with SingleTickerProvid
         ),
       ),
     ];
-  }
-}
-
-class PageIndicator extends StatelessWidget {
-  const PageIndicator({super.key, this.length = 1, this.activeIndex = 0, this.activeColor = AppPallete.primary});
-
-  final int length;
-  final int activeIndex;
-  final Color activeColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: SizedBox.fromSize(
-        size: const Size.fromHeight(8),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final size = constraints.smallest;
-            final activeWidth = size.width * 0.5;
-            final inActiveWidth = (size.width - activeWidth - (2 * length * 2)) / (length - 1);
-
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                length,
-                (index) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 2),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeOut,
-                    height: index == activeIndex ? 8 : 5,
-                    width: index == activeIndex ? activeWidth : inActiveWidth,
-                    decoration: BoxDecoration(
-                      color: index == activeIndex ? activeColor : AppPallete.onBlack,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../features/entry_point/presentation/views/entry_point.dart';
 import '../../features/home/presentation/views/home_view.dart';
 
 import '../../features/on_boarding_and_splash/presentation/view/on_boarding_view.dart';
@@ -30,10 +31,10 @@ abstract class AppRouter {
       //     builder: (_) => const AuthenticateView(),
       //   );
 
-      // case Routes.kEntryPointView:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const EntryPoint(),
-      //   );
+      case Routes.kEntryPointView:
+        return MaterialPageRoute(
+          builder: (_) => const EntryPoint(),
+        );
 
       case Routes.kHomeView:
         return MaterialPageRoute(
