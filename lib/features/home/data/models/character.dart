@@ -1,37 +1,27 @@
-import 'character_thumbnail.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Character {
-  final int id;
-  final String name;
-  final String description;
-  final String modified;
-  final CharacterThumbnail thumbnail;
+part 'character.freezed.dart';
+part 'character.g.dart';
 
-  Character({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.modified,
-    required this.thumbnail,
-  });
+@freezed
+class Character with _$Character {
+  factory Character({
+    required int id,
+    required String name,
+    required String description,
+    required String modified,
+    required CharacterThumbnail thumbnail,
+  }) = _Character;
 
-  factory Character.fromJson(Map<String, dynamic> json) {
-    return Character(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'] ?? '',
-      modified: json['modified'],
-      thumbnail: CharacterThumbnail.fromJson(json['thumbnail']),
-    );
-  }
+  factory Character.fromJson(Map<String, dynamic> json) => _$CharacterFromJson(json);
+}
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'description': description,
-      'modified': modified,
-      'thumbnail': thumbnail.toJson(),
-    };
-  }
+@freezed
+class CharacterThumbnail with _$CharacterThumbnail {
+  factory CharacterThumbnail({
+    required String path,
+    required String extension,
+  }) = _CharacterThumbnail;
+
+  factory CharacterThumbnail.fromJson(Map<String, dynamic> json) => _$CharacterThumbnailFromJson(json);
 }

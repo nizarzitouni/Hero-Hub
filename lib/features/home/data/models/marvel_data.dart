@@ -1,37 +1,18 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'character.dart';
 
-class MarvelData {
-  final int offset;
-  final int limit;
-  final int total;
-  final int count;
-  final List<Character> results;
+part 'marvel_data.freezed.dart';
+part 'marvel_data.g.dart';
 
-  MarvelData({
-    required this.offset,
-    required this.limit,
-    required this.total,
-    required this.count,
-    required this.results,
-  });
+@freezed
+class MarvelData with _$MarvelData {
+  factory MarvelData({
+    required int offset,
+    required int limit,
+    required int total,
+    required int count,
+    required List<Character> results,
+  }) = _MarvelData;
 
-  factory MarvelData.fromJson(Map<String, dynamic> json) {
-    return MarvelData(
-      offset: json['offset'],
-      limit: json['limit'],
-      total: json['total'],
-      count: json['count'],
-      results: List<Character>.from(json['results'].map((x) => Character.fromJson(x))),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'offset': offset,
-      'limit': limit,
-      'total': total,
-      'count': count,
-      'results': List<dynamic>.from(results.map((x) => x.toJson())),
-    };
-  }
+  factory MarvelData.fromJson(Map<String, dynamic> json) => _$MarvelDataFromJson(json);
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hero_hub/features/home/data/repos/marvel_repo_impl.dart';
+import '../../features/home/presentation/manager/character_details_cubit/character_details_cubit.dart';
 import '../../features/home/presentation/views/character_detail_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
@@ -9,6 +12,7 @@ import '../../features/home/presentation/views/home_view.dart';
 
 import '../../features/on_boarding_and_splash/presentation/view/on_boarding_view.dart';
 import '../../features/on_boarding_and_splash/presentation/view/splash_view.dart';
+import '../services/service_locator.dart';
 import 'routes.dart';
 
 abstract class AppRouter {
@@ -51,7 +55,10 @@ abstract class AppRouter {
         // Check if arguments are provided and cast them appropriately
         if (args is Character) {
           return MaterialPageRoute(
-            builder: (_) => CharacterDetailView(character: args),
+            builder: (_) => BlocProvider(
+              create: (context) => CharacterDetailsCubit(serviceLocator<MarvelRepoImpl>())..loadCharacterComics(args.id),
+              child: CharacterDetailView(character: args),
+            ),
           );
         } else {
           // if no arguments or wrong type of arguments are provided

@@ -15,6 +15,10 @@ extension ContextExt on BuildContext {
   TextStyle get big22TitlesW600 => AppTextStyles.big22TitlesW600;
   TextStyle get sm18Titles400 => AppTextStyles.sm18Titles400;
   TextStyle get mid18Titles400 => AppTextStyles.mid18Titles400;
+  TextStyle get bodyText => AppTextStyles.bodyText;
+  TextStyle get captionText => AppTextStyles.captionText;
+  TextStyle get subtitleText => AppTextStyles.subtitleText;
+  TextStyle get emphasizedText => AppTextStyles.emphasizedText;
 
 // Language
   // String translate(String langkey) {

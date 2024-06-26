@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
-import '../api/dio_consumer.dart';
-import '../../features/home/presentation/manager/home_cubit/home_cubit.dart';
+import 'package:hero_hub/core/api/dio_consumer.dart';
+import 'package:hero_hub/features/home/presentation/manager/home_cubit/home_cubit.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import '../../app/app_cubit/app_cubit.dart';
