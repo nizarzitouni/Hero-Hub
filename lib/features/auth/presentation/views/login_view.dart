@@ -23,8 +23,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,12 +62,18 @@ class _LoginViewState extends State<LoginView> {
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
                       ),
                       const SizedBox(height: 30),
-                      AuthField(hintText: 'Email', controller: emailController),
+                      AuthField(
+                        hintText: 'Email',
+                        controller: _emailController,
+                        prefixIcon: Icons.email,
+                        keyboardType: TextInputType.emailAddress,
+                      ),
                       const SizedBox(height: 15),
                       AuthField(
                         hintText: 'Password',
-                        controller: passwordController,
-                        isObscureText: isObscure,
+                        controller: _passwordController,
+                        isObscureText: true,
+                        prefixIcon: Icons.lock,
                         suffixIcon: IconButton(
                           icon: Icon(isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined),
                           onPressed: authCubit.obscurePasswordText,
@@ -77,15 +83,15 @@ class _LoginViewState extends State<LoginView> {
                       CustomFilledButton(
                         text: 'Sign In',
                         width: double.infinity,
-                        height: 55.h,
+                        height: 50.h,
                         fontSize: 18,
                         onPressed: () {
                           // Unfocus the current focus node to hide the keyboard
                           FocusScope.of(context).unfocus();
                           if (formKey.currentState!.validate()) {
                             authCubit.sigInWithEmailAndPassword(
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim(),
+                              email: _emailController.text.trim(),
+                              password: _passwordController.text.trim(),
                             );
                           }
                         },
@@ -94,7 +100,7 @@ class _LoginViewState extends State<LoginView> {
                       CustomFilledButton(
                         text: 'Continue As Guest',
                         width: double.infinity,
-                        height: 55.h,
+                        height: 50.h,
                         fontSize: 18,
                         onPressed: () {
                           // context.pushReplacementNamed(Routes.kEntryPointView);
@@ -134,8 +140,8 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 }

@@ -22,9 +22,9 @@ class SignupView extends StatefulWidget {
 
 class _SignupViewState extends State<SignupView> {
   final formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _SignupViewState extends State<SignupView> {
           orElse: () => false,
         );
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(backgroundColor: AppPallete.scaffold),
           body: Stack(
             children: [
               Padding(
@@ -59,14 +59,25 @@ class _SignupViewState extends State<SignupView> {
                       children: [
                         const Text('Sign Up.', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50)),
                         verticalSpace(30),
-                        AuthField(hintText: 'Name', controller: nameController),
+                        AuthField(
+                          hintText: 'Name',
+                          controller: _nameController,
+                          prefixIcon: Icons.person,
+                          keyboardType: TextInputType.text,
+                        ),
                         verticalSpace(15),
-                        AuthField(hintText: 'Email', controller: emailController),
+                        AuthField(
+                          hintText: 'Email',
+                          controller: _nameController,
+                          prefixIcon: Icons.email,
+                          keyboardType: TextInputType.emailAddress,
+                        ),
                         verticalSpace(15),
                         AuthField(
                           hintText: 'Password',
-                          controller: passwordController,
-                          isObscureText: isObscure,
+                          controller: _passwordController,
+                          isObscureText: true,
+                          prefixIcon: Icons.lock,
                           suffixIcon: IconButton(
                             icon: Icon(isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined),
                             onPressed: authCubit.obscurePasswordText,
@@ -78,14 +89,14 @@ class _SignupViewState extends State<SignupView> {
                         CustomFilledButton(
                           text: 'Sign Up',
                           width: double.infinity,
-                          height: 55.h,
+                          height: 50.h,
                           fontSize: 18,
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               authCubit.signupWithEmailAndPassword(
-                                name: nameController.text.trim(),
-                                email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
+                                name: _nameController.text.trim(),
+                                email: _emailController.text.trim(),
+                                password: _passwordController.text.trim(),
                               );
                             }
                           },
@@ -125,9 +136,9 @@ class _SignupViewState extends State<SignupView> {
 
   @override
   void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 }
