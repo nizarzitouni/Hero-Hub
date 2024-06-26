@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hero_hub/core/extensions/context_extension.dart';
-import 'package:hero_hub/core/utility/spacing.dart';
-import 'package:hero_hub/features/auth/presentation/functions/user_loged_in.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/utility/spacing.dart';
+import '../functions/user_loged_in.dart';
 
 import '../../../../core/routes/routes.dart';
 import '../../../../core/theme/app_pallete.dart';

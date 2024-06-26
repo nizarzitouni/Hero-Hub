@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hero_hub/features/home/presentation/views/character_detail_view.dart';
-import 'package:hero_hub/features/profile/presentation/views/profile_view.dart';
+import '../../features/home/presentation/views/character_detail_view.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/entry_point/presentation/views/entry_point.dart';

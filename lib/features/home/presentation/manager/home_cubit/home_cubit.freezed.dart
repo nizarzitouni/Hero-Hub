@@ -20,7 +20,9 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> characters) loaded,
+    required TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)
+        loaded,
     required TResult Function(String errorMsg) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$HomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Character> characters)? loaded,
+    TResult? Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult? Function(String errorMsg)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> characters)? loaded,
+    TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult Function(String errorMsg)? failure,
     required TResult orElse(),
   }) =>
@@ -125,7 +131,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> characters) loaded,
+    required TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)
+        loaded,
     required TResult Function(String errorMsg) failure,
   }) {
     return initial();
@@ -136,7 +144,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Character> characters)? loaded,
+    TResult? Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult? Function(String errorMsg)? failure,
   }) {
     return initial?.call();
@@ -147,7 +157,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> characters)? loaded,
+    TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult Function(String errorMsg)? failure,
     required TResult orElse(),
   }) {
@@ -239,7 +251,9 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> characters) loaded,
+    required TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)
+        loaded,
     required TResult Function(String errorMsg) failure,
   }) {
     return loading();
@@ -250,7 +264,9 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Character> characters)? loaded,
+    TResult? Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult? Function(String errorMsg)? failure,
   }) {
     return loading?.call();
@@ -261,7 +277,9 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> characters)? loaded,
+    TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult Function(String errorMsg)? failure,
     required TResult orElse(),
   }) {
@@ -319,7 +337,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Character> characters});
+  $Res call({List<Character> characters, bool isLoading, bool hasReachedMax});
 }
 
 /// @nodoc
@@ -334,12 +352,22 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? characters = null,
+    Object? isLoading = null,
+    Object? hasReachedMax = null,
   }) {
     return _then(_$LoadedImpl(
       characters: null == characters
           ? _value._characters
           : characters // ignore: cast_nullable_to_non_nullable
               as List<Character>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -347,7 +375,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl({required final List<Character> characters})
+  const _$LoadedImpl(
+      {required final List<Character> characters,
+      required this.isLoading,
+      required this.hasReachedMax})
       : _characters = characters;
 
   final List<Character> _characters;
@@ -359,8 +390,13 @@ class _$LoadedImpl implements Loaded {
   }
 
   @override
+  final bool isLoading;
+  @override
+  final bool hasReachedMax;
+
+  @override
   String toString() {
-    return 'HomeState.loaded(characters: $characters)';
+    return 'HomeState.loaded(characters: $characters, isLoading: $isLoading, hasReachedMax: $hasReachedMax)';
   }
 
   @override
@@ -369,12 +405,19 @@ class _$LoadedImpl implements Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             const DeepCollectionEquality()
-                .equals(other._characters, _characters));
+                .equals(other._characters, _characters) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_characters));
+      runtimeType,
+      const DeepCollectionEquality().hash(_characters),
+      isLoading,
+      hasReachedMax);
 
   @JsonKey(ignore: true)
   @override
@@ -387,10 +430,12 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> characters) loaded,
+    required TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)
+        loaded,
     required TResult Function(String errorMsg) failure,
   }) {
-    return loaded(characters);
+    return loaded(characters, isLoading, hasReachedMax);
   }
 
   @override
@@ -398,10 +443,12 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Character> characters)? loaded,
+    TResult? Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult? Function(String errorMsg)? failure,
   }) {
-    return loaded?.call(characters);
+    return loaded?.call(characters, isLoading, hasReachedMax);
   }
 
   @override
@@ -409,12 +456,14 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> characters)? loaded,
+    TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult Function(String errorMsg)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(characters);
+      return loaded(characters, isLoading, hasReachedMax);
     }
     return orElse();
   }
@@ -458,10 +507,14 @@ class _$LoadedImpl implements Loaded {
 }
 
 abstract class Loaded implements HomeState {
-  const factory Loaded({required final List<Character> characters}) =
-      _$LoadedImpl;
+  const factory Loaded(
+      {required final List<Character> characters,
+      required final bool isLoading,
+      required final bool hasReachedMax}) = _$LoadedImpl;
 
   List<Character> get characters;
+  bool get isLoading;
+  bool get hasReachedMax;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -534,7 +587,9 @@ class _$FailureImpl implements Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> characters) loaded,
+    required TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)
+        loaded,
     required TResult Function(String errorMsg) failure,
   }) {
     return failure(errorMsg);
@@ -545,7 +600,9 @@ class _$FailureImpl implements Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Character> characters)? loaded,
+    TResult? Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult? Function(String errorMsg)? failure,
   }) {
     return failure?.call(errorMsg);
@@ -556,7 +613,9 @@ class _$FailureImpl implements Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> characters)? loaded,
+    TResult Function(
+            List<Character> characters, bool isLoading, bool hasReachedMax)?
+        loaded,
     TResult Function(String errorMsg)? failure,
     required TResult orElse(),
   }) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hero_hub/core/extensions/context_extension.dart';
-import 'package:hero_hub/core/routes/routes.dart';
-import 'package:hero_hub/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'package:hero_hub/features/auth/presentation/manager/auth_cubit/auth_state.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/routes/routes.dart';
+import '../../../auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import '../../../auth/presentation/manager/auth_cubit/auth_state.dart';
 import '../../../../core/assets_constants.dart';
 import '../../../../core/theme/app_pallete.dart';
 import '../../../../core/utility/show_snackbar.dart';
