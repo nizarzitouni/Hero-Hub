@@ -55,9 +55,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         centerTitle: true,
         backgroundColor: AppPallete.scaffold,
       ),
+      floatingActionButtonLocation: CustomFabLocation(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.read<HomeCubit>().fetchCharacters(),
-        child: const Icon(Icons.refresh, color: Colors.red),
+        backgroundColor: AppPallete.primary,
+        child: const Icon(Icons.refresh, color: AppPallete.white), // Add this line
       ),
       body: SafeArea(
         child: Padding(
@@ -105,6 +107,17 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         },
         childCount: characters.length,
       ),
+    );
+  }
+}
+
+class CustomFabLocation extends FloatingActionButtonLocation {
+  @override
+  Offset getOffset(ScaffoldPrelayoutGeometry scaffoldGeometry) {
+    // Position FAB 20 pixels from the bottom right corner
+    return Offset(
+      scaffoldGeometry.scaffoldSize.width - 56.0 - 20.0,
+      scaffoldGeometry.scaffoldSize.height - 140 - scaffoldGeometry.minInsets.bottom,
     );
   }
 }
