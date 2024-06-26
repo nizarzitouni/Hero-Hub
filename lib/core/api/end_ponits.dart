@@ -1,5 +1,5 @@
 class EndPoint {
-  static String baseUrl = 'https://gateway.marvel.com/';
+  static String baseUrl = 'https://gateway.marvel.com/v1/public/';
   static String getCharacters = '/characters';
   // static String getUserDataEndPoint(String id) {
   //   return 'user/get-user/$id';
