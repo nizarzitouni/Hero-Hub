@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/config/app_information.dart';
-import '../../../../../core/theme/app_pallete.dart';
+import '../../../../../../core/config/app_information.dart';
+import '../../../../../../core/theme/app_pallete.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/extensions/context_extension.dart';
+import '../../../../../../core/extensions/context_extension.dart';
 
-import '../../../../../core/routes/routes.dart';
-import '../../../data/models/character.dart';
+import '../../../../../../core/routes/routes.dart';
+import '../../../../data/models/character.dart';
 
 class CharacterCard extends StatelessWidget {
   const CharacterCard({super.key, required this.character});

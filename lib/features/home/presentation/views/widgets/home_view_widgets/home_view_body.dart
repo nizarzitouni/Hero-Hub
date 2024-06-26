@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/extensions/context_extension.dart';
-import '../../../../../core/utility/spacing.dart';
+import '../../../../../../core/extensions/context_extension.dart';
+import '../../../../../../core/utility/spacing.dart';
 import 'loading_and_no_more_widget.dart';
-import '../../../../../core/assets_constants.dart';
-import '../../../../../core/config/app_information.dart';
-import '../../../../../core/theme/app_pallete.dart';
-import '../../../../../core/widgets/filtred_image_widget.dart';
-import '../../manager/home_cubit/home_cubit.dart';
+import '../../../../../../core/assets_constants.dart';
+import '../../../../../../core/config/app_information.dart';
+import '../../../../../../core/theme/app_pallete.dart';
+import '../../../../../../core/widgets/filtred_image_widget.dart';
+import '../../../manager/home_cubit/home_cubit.dart';
 import 'character_sliver_grid.dart';
 import 'custom_fab_location.dart';
 

@@ -14,8 +14,6 @@ import '../features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'app_cubit/app_cubit.dart';
 import 'connectivity_controller.dart';
 
-bool isDevMode = true;
-
 class HeroHub extends StatelessWidget {
   const HeroHub({super.key});
 

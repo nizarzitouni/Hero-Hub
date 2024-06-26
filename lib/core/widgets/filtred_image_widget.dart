@@ -1,11 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// FiltredImageWidget(
-//               imagePath: AssetsConstants.noInternetImage,
-//               msg: "Please check your internet connection",
-//             )
 class FiltredImageWidget extends StatelessWidget {
   const FiltredImageWidget({
     required this.imagePath,
@@ -16,44 +11,53 @@ class FiltredImageWidget extends StatelessWidget {
   final String imagePath;
   final String msg;
   final bool isFilterd;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: 160.w,
-          height: 160.h,
-          child: Center(
-            child: isFilterd
-                ? Column(
-                    children: <Widget>[
-                      ColorFiltered(
+    return SizedBox(
+      height: MediaQuery.of(context).size.height - 160.h,
+      child: Center(
+        child: Container(
+          width: 200.w, // Increased width to accommodate longer messages
+          constraints: BoxConstraints(maxHeight: 200.h), // Set a max height
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // Use minimum space vertically
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              if (isFilterd)
+                ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    Colors.grey.withOpacity(0.6),
+                    BlendMode.modulate,
+                  ),
+                  child: Image.asset(imagePath, width: 90),
+                )
+              else
+                Image.asset(imagePath, width: 90),
+              SizedBox(height: 12.h), // Increased space between image and text
+              Flexible(
+                // Allow text to shrink if necessary
+                child: isFilterd
+                    ? ColorFiltered(
                         colorFilter: ColorFilter.mode(
-                          Colors.grey.withOpacity(0.6), // Adjust the opacity as needed
-                          BlendMode.modulate,
-                        ),
-                        child: Image.asset(imagePath, width: 90),
-                      ),
-                      const SizedBox(height: 6),
-                      ColorFiltered(
-                        colorFilter: ColorFilter.mode(
-                          Colors.grey.withOpacity(0.6), // Adjust the opacity as needed
+                          Colors.grey.withOpacity(0.6),
                           BlendMode.modulate,
                         ),
                         child: Text(
                           msg,
                           textAlign: TextAlign.center,
+                          maxLines: 4, // Limit to 4 lines
+                          overflow: TextOverflow.ellipsis, // Add ellipsis for overflow
                         ),
+                      )
+                    : Text(
+                        msg,
+                        textAlign: TextAlign.center,
+                        maxLines: 4, // Limit to 4 lines
+                        overflow: TextOverflow.ellipsis, // Add ellipsis for overflow
                       ),
-                    ],
-                  )
-                : Column(
-                    children: <Widget>[
-                      Image.asset(imagePath, width: 90),
-                      const SizedBox(height: 6),
-                      Text(msg, textAlign: TextAlign.center),
-                    ],
-                  ),
+              ),
+            ],
           ),
         ),
       ),
