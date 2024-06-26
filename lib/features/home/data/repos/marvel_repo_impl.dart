@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hero_hub/core/errors/failures.dart';
-import 'package:hero_hub/features/home/data/models/character.dart';
-import 'package:hero_hub/features/home/data/repos/marvel_repo.dart';
+import '../../../../core/errors/failures.dart';
+import '../models/character.dart';
+import 'marvel_repo.dart';
 
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/api/end_ponits.dart';
@@ -21,7 +21,7 @@ class MarvelRepoImpl extends MarvelRepo {
   }
 
   @override
-  Future<Either<Failure, List<Character>>> getCharacters() async {
+  Future<Either<Failure, List<Character>>> getCharacters({int offset = 0, int limit = 10}) async {
     final int timeStamp = DateTime.now().millisecondsSinceEpoch;
     final String hash = _generateHash(timeStamp, MarvelSecrrets.marvelPrivateApiKey, MarvelSecrrets.marvelPublicApiKey);
 
@@ -32,6 +32,8 @@ class MarvelRepoImpl extends MarvelRepo {
           'ts': timeStamp,
           'apikey': MarvelSecrrets.marvelPublicApiKey,
           'hash': hash,
+          'offset': offset,
+          'limit': limit,
         },
       );
 

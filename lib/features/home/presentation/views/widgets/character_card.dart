@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hero_hub/core/extensions/context_extension.dart';
+import '../../../../../core/extensions/context_extension.dart';
 
 import '../../../../../core/routes/routes.dart';
 import '../../../data/models/character.dart';

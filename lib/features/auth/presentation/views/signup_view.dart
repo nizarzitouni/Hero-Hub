@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hero_hub/core/extensions/context_extension.dart';
-import 'package:hero_hub/core/utility/spacing.dart';
-import 'package:hero_hub/core/widgets/my_buttons.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/utility/spacing.dart';
+import '../../../../core/widgets/my_buttons.dart';
 
 import '../../../../core/theme/app_pallete.dart';
 import '../../../../core/utility/show_snackbar.dart';
