@@ -36,7 +36,7 @@ class _EntryPointState extends State<EntryPoint> {
       listener: (context, state) {
         state.maybeWhen(
           signOutSuccess: () {
-            userLogedIn(false);
+            userAuthenticated(false);
             context.pushReplacementNamed(Routes.kLoginView);
           },
           signOutFailure: (errorMessage) => showSnackBar(context: context, message: errorMessage),

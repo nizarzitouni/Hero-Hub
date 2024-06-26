@@ -32,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
       listener: (context, state) {
         state.maybeWhen(
           signInSuccess: (user) {
-            userLogedIn(true);
+            userAuthenticated(true);
             showSnackBar(context: context, message: 'Welcome');
             context.pushReplacementNamed(Routes.kEntryPointView);
           },
@@ -80,6 +80,8 @@ class _LoginViewState extends State<LoginView> {
                         height: 55.h,
                         fontSize: 18,
                         onPressed: () {
+                          // Unfocus the current focus node to hide the keyboard
+                          FocusScope.of(context).unfocus();
                           if (formKey.currentState!.validate()) {
                             authCubit.sigInWithEmailAndPassword(
                               email: emailController.text.trim(),

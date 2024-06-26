@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hero_hub/features/auth/presentation/functions/user_loged_in.dart';
 import '../../../../core/config/app_information.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/routes/routes.dart';
@@ -144,7 +145,12 @@ class _OnBoardingViewState extends State<OnBoardingView> with SingleTickerProvid
                   CustomFilledButton(
                     onPressed: () {
                       onBoardingVisited();
-                      context.pushReplacementNamed(Routes.kEntryPointView);
+
+                      if (isUserAuthenticated()) {
+                        context.pushReplacementNamed(Routes.kEntryPointView);
+                      } else {
+                        context.pushReplacementNamed(Routes.kLoginView);
+                      }
                     },
                     text: 'Get Started!',
                     borderRadius: 10,

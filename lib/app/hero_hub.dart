@@ -29,9 +29,9 @@ class HeroHub extends StatelessWidget {
           if (value) {
             return MultiBlocProvider(
               providers: [
-                BlocProvider<AuthCubit>(create: (BuildContext context) => serviceLocator<AuthCubit>()),
                 BlocProvider<AppCubit>.value(value: serviceLocator<AppCubit>()),
-                BlocProvider<HomeCubit>.value(value: serviceLocator<HomeCubit>()..fetchCharacters()),
+                BlocProvider<AuthCubit>.value(value: serviceLocator<AuthCubit>()),
+                BlocProvider<HomeCubit>.value(value: serviceLocator<HomeCubit>()),
               ],
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,

@@ -6,17 +6,13 @@ import 'end_ponits.dart';
 import 'errors/exceptions.dart';
 
 class DioConsumer extends ApiConsumer {
+  final Dio dio;
+
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = EndPoint.baseUrl;
     dio.interceptors.add(ApiInterceptor());
-    dio.interceptors.add(
-      LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-      ),
-    );
+    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
   }
-  final Dio dio;
 
   @override
   Future<dynamic> delete(String path, {dynamic data, Map<String, dynamic>? queryParameters, bool isFromData = false}) async {
