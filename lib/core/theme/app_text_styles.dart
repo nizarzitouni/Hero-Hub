@@ -16,6 +16,12 @@ abstract class AppTextStyles {
     color: AppPallete.primary,
     fontFamily: 'Pacifico',
   );
+  static TextStyle big22TitlesW600 = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w600,
+    color: AppPallete.primary,
+    fontFamily: "Pacifico",
+  );
   static TextStyle sm18Titles400 = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.w400,

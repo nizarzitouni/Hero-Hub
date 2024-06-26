@@ -2,6 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// FiltredImageWidget(
+//               imagePath: AssetsConstants.noInternetImage,
+//               msg: "Please check your internet connection",
+//             )
 class FiltredImageWidget extends StatelessWidget {
   const FiltredImageWidget({
     required this.imagePath,
