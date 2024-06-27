@@ -82,7 +82,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       return state.when(
                         initial: () => const SliverToBoxAdapter(child: Center(child: Text('Press button to load characters'))),
                         loading: () => const SliverToBoxAdapter(
-                          child: SizedBox(height: 650, width: 200, child: Center(child: CircularProgressIndicator())),
+                          child: SizedBox(
+                            height: 650,
+                            width: 200,
+                            child: Center(child: CircularProgressIndicator()),
+                          ),
                         ),
                         loaded: (characters, isLoading, hasReachedMax) => CharacterSliverGrid(characters: characters),
                         failure: (errorMsg) => SliverToBoxAdapter(

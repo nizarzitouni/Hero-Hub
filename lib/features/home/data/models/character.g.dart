@@ -14,6 +14,9 @@ _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
       modified: json['modified'] as String,
       thumbnail: CharacterThumbnail.fromJson(
           json['thumbnail'] as Map<String, dynamic>),
+      urls: (json['urls'] as List<dynamic>)
+          .map((e) => CharacterUrl.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$CharacterImplToJson(_$CharacterImpl instance) =>
@@ -23,6 +26,7 @@ Map<String, dynamic> _$$CharacterImplToJson(_$CharacterImpl instance) =>
       'description': instance.description,
       'modified': instance.modified,
       'thumbnail': instance.thumbnail,
+      'urls': instance.urls,
     };
 
 _$CharacterThumbnailImpl _$$CharacterThumbnailImplFromJson(
@@ -37,4 +41,16 @@ Map<String, dynamic> _$$CharacterThumbnailImplToJson(
     <String, dynamic>{
       'path': instance.path,
       'extension': instance.extension,
+    };
+
+_$CharacterUrlImpl _$$CharacterUrlImplFromJson(Map<String, dynamic> json) =>
+    _$CharacterUrlImpl(
+      type: json['type'] as String,
+      url: json['url'] as String,
+    );
+
+Map<String, dynamic> _$$CharacterUrlImplToJson(_$CharacterUrlImpl instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'url': instance.url,
     };

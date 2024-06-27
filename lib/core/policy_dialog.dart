@@ -4,7 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'theme/theme.dart';
-import 'utility/launch_custom_url copy.dart';
+import 'utility/launch_custom_url.dart';
 
 //How to use just call this on a btn
 // void _showPolicyDialog({required BuildContext context, required String filePath}) {

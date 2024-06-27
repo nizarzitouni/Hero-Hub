@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hero_hub/features/favorites_screen/presentation/manager/favorite_cubit/favorite_cubit.dart';
 import '../features/home/presentation/manager/home_cubit/home_cubit.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -30,6 +31,7 @@ class HeroHub extends StatelessWidget {
                 BlocProvider<AppCubit>.value(value: serviceLocator<AppCubit>()),
                 BlocProvider<AuthCubit>.value(value: serviceLocator<AuthCubit>()),
                 BlocProvider<HomeCubit>.value(value: serviceLocator<HomeCubit>()),
+                BlocProvider<FavoritesCubit>.value(value: serviceLocator<FavoritesCubit>()),
               ],
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,

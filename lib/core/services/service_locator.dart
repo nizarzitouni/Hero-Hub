@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hero_hub/core/api/dio_consumer.dart';
+import 'package:hero_hub/features/favorites_screen/presentation/manager/favorite_cubit/favorite_cubit.dart';
 import 'package:hero_hub/features/home/presentation/manager/home_cubit/home_cubit.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -28,13 +29,10 @@ Future<void> setupServiceLocator() async {
   await _initFirebase();
   _initAuth();
 
-  // serviceLocator.registerSingleton<InternetCubit>(InternetCubit(connectivity: serviceLocator<Connectivity>()));
-
+  serviceLocator.registerSingleton<AppCubit>(AppCubit());
   serviceLocator.registerLazySingleton<MarvelRepoImpl>(() => MarvelRepoImpl(serviceLocator<DioConsumer>()));
   serviceLocator.registerSingleton<HomeCubit>(HomeCubit(serviceLocator<MarvelRepoImpl>()));
-
-  // serviceLocator.registerSingleton<AppCubit>(AppCubit(serviceLocator<HomeRepoImpl>()));
-  serviceLocator.registerSingleton<AppCubit>(AppCubit());
+  serviceLocator.registerLazySingleton<FavoritesCubit>(() => FavoritesCubit(serviceLocator<CacheHelper>()));
 
   // talker.info("Setup Service Locator is DONE!");
 }

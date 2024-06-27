@@ -48,9 +48,15 @@ class CacheHelper {
   Future<bool> clearData() async {
     return await _sharedPreferences.clear();
   }
+
+  Future<List<String>> getAllKeysWithPrefix(String prefix) async {
+    final allKeys = _sharedPreferences.getKeys();
+    return allKeys.where((key) => key.startsWith(prefix)).toList();
+  }
 }
 
 abstract class CacheKeys {
   static const String onBoardingVisited = "onBoardingVisited";
   static const String isLogedIn = "isLogedIn";
+  static const String favoriteKeyPrefix = "favorite__";
 }

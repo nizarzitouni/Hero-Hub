@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hero_hub/features/favorites_screen/presentation/views/favorites_view.dart';
 import 'package:hero_hub/features/home/data/repos/marvel_repo_impl.dart';
 import '../../features/home/presentation/manager/character_details_cubit/character_details_cubit.dart';
 import '../../features/home/presentation/views/character_detail_view.dart';
@@ -70,6 +71,10 @@ abstract class AppRouter {
       case Routes.kProfileView:
         return MaterialPageRoute(
           builder: (_) => const ProfileView(),
+        );
+      case Routes.kFavoriteView:
+        return MaterialPageRoute(
+          builder: (_) => const FavoritesView(),
         );
 
       default:

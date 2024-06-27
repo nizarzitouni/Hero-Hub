@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/config/app_information.dart';
 import '../../../../../core/theme/app_pallete.dart';
 import '../../../../../core/theme/app_text_styles.dart';
-import '../../../../../core/utility/launch_custom_url copy.dart';
+import '../../../../../core/utility/launch_custom_url.dart';
 
 class PrivacyText extends StatelessWidget {
   const PrivacyText({super.key});

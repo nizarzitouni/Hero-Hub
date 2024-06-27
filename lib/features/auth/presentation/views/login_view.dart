@@ -107,7 +107,7 @@ class _LoginViewState extends State<LoginView> {
                           showSnackBar(context: context, message: 'Coming soon');
                         },
                       ),
-                      const SizedBox(height: 20),
+                      verticalSpace(20),
                       GestureDetector(
                         onTap: () => context.pushName(Routes.kSignUpView),
                         child: RichText(
