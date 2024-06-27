@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hero_hub/core/utility/spacing.dart';
 
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../favorites_screen/presentation/manager/favorite_cubit/favorite_cubit.dart' as fav;
 import '../../data/models/character.dart';
 import '../manager/character_details_cubit/character_details_cubit.dart';
 import 'widgets/character_detail_view_widgets/comic_horizontal_list.dart';
@@ -12,11 +13,12 @@ class CharacterDetailView extends StatelessWidget {
 
   const CharacterDetailView({super.key, required this.character});
 
+  void _toggleFavorite(BuildContext context) {
+    context.read<fav.FavoritesCubit>().manageFavorites(character);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Fetch comics when the view is built
-    // context.read<CharacterDetailsCubit>().loadCharacterComics(character.id);
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -34,6 +36,17 @@ class CharacterDetailView extends StatelessWidget {
                 ),
               ),
             ),
+            actions: [
+              BlocBuilder<fav.FavoritesCubit, fav.FavoritesState>(
+                builder: (context, state) {
+                  final isFavorite = state is fav.Loaded && state.favorites.any((fav) => fav.id == character.id);
+                  return IconButton(
+                    icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+                    onPressed: () => _toggleFavorite(context),
+                  );
+                },
+              ),
+            ],
           ),
           SliverToBoxAdapter(
             child: Padding(
