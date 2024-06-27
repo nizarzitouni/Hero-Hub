@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hero_hub/features/favorites_screen/presentation/views/favorites_view.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../auth/presentation/manager/auth_cubit/auth_cubit.dart';
@@ -25,6 +26,7 @@ class _EntryPointState extends State<EntryPoint> {
 
   final List<Widget> _screens = [
     const HomeView(),
+    const FavoritesView(),
     const ProfileView(),
   ];
 
@@ -75,7 +77,8 @@ class _EntryPointState extends State<EntryPoint> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildNavItem(0, AssetsConstants.nbHomeActiveSVG, AssetsConstants.nbHomeInactiveSVG, 'Home'),
-          _buildNavItem(1, AssetsConstants.nbHomeActiveSVG, AssetsConstants.nbHomeInactiveSVG, 'Profile'),
+          _buildNavItem(1, AssetsConstants.nbHomeActiveSVG, AssetsConstants.nbHomeInactiveSVG, 'Favorite'),
+          _buildNavItem(2, AssetsConstants.nbHomeActiveSVG, AssetsConstants.nbHomeInactiveSVG, 'Profile'),
         ],
       ),
     );

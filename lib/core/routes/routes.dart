@@ -8,5 +8,6 @@ abstract class Routes {
   static const kProfileView = '/profile';
   static const kHomeView = '/homeView';
   static const kCharacterDetailsView = '/characterDetailsView';
+  static const kFavoriteView = '/favoriteView';
   // static const kSearchView = '/searchView';
 }
