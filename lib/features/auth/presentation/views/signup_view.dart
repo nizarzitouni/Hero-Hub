@@ -68,7 +68,7 @@ class _SignupViewState extends State<SignupView> {
                         verticalSpace(15),
                         AuthField(
                           hintText: 'Email',
-                          controller: _nameController,
+                          controller: _emailController,
                           prefixIcon: Icons.email,
                           keyboardType: TextInputType.emailAddress,
                         ),

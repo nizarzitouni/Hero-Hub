@@ -64,38 +64,39 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           _homeCubit.fetchCharacters();
         },
         backgroundColor: AppPallete.primary,
-        child: const Icon(Icons.refresh, color: AppPallete.white), // Add this line
+        child: const Icon(Icons.refresh, color: AppPallete.white),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: CustomScrollView(
-            controller: _scrollController,
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              // const SliverToBoxAdapter(child: HomeAppBar()),
-              SliverToBoxAdapter(child: verticalSpace(10)),
-              BlocBuilder<HomeCubit, HomeState>(
-                builder: (context, state) {
-                  return state.when(
-                    initial: () => const SliverToBoxAdapter(child: Center(child: Text('Press button to load characters'))),
-                    loading: () => const SliverToBoxAdapter(
-                      child: SizedBox(height: 650, width: 200, child: Center(child: CircularProgressIndicator())),
-                    ),
-                    loaded: (characters, isLoading, hasReachedMax) => SliverPadding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      sliver: CharacterSliverGrid(characters: characters),
-                    ),
-                    failure: (errorMsg) => SliverToBoxAdapter(
-                      child: FiltredImageWidget(imagePath: AssetsConstants.noContentImage, msg: 'Error: $errorMsg'),
-                    ),
-                  );
-                },
+        child: Stack(
+          children: [
+            Container(color: AppPallete.scaffold),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: CustomScrollView(
+                controller: _scrollController,
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  SliverToBoxAdapter(child: verticalSpace(10)),
+                  BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      return state.when(
+                        initial: () => const SliverToBoxAdapter(child: Center(child: Text('Press button to load characters'))),
+                        loading: () => const SliverToBoxAdapter(
+                          child: SizedBox(height: 650, width: 200, child: Center(child: CircularProgressIndicator())),
+                        ),
+                        loaded: (characters, isLoading, hasReachedMax) => CharacterSliverGrid(characters: characters),
+                        failure: (errorMsg) => SliverToBoxAdapter(
+                          child: FiltredImageWidget(imagePath: AssetsConstants.noContentImage, msg: 'Error: $errorMsg'),
+                        ),
+                      );
+                    },
+                  ),
+                  const LoadingAndNoMoreWidget(),
+                  SliverToBoxAdapter(child: verticalSpace(100)),
+                ],
               ),
-              const LoadingAndNoMoreWidget(),
-              SliverToBoxAdapter(child: verticalSpace(100)),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
