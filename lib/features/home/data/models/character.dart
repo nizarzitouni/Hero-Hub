@@ -11,6 +11,7 @@ class Character with _$Character {
     required String description,
     required String modified,
     required CharacterThumbnail thumbnail,
+    required List<CharacterUrl> urls,
   }) = _Character;
 
   factory Character.fromJson(Map<String, dynamic> json) => _$CharacterFromJson(json);
@@ -24,4 +25,14 @@ class CharacterThumbnail with _$CharacterThumbnail {
   }) = _CharacterThumbnail;
 
   factory CharacterThumbnail.fromJson(Map<String, dynamic> json) => _$CharacterThumbnailFromJson(json);
+}
+
+@freezed
+class CharacterUrl with _$CharacterUrl {
+  factory CharacterUrl({
+    required String type,
+    required String url,
+  }) = _CharacterUrl;
+
+  factory CharacterUrl.fromJson(Map<String, dynamic> json) => _$CharacterUrlFromJson(json);
 }

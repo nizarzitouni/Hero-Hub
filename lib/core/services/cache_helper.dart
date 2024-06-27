@@ -58,5 +58,5 @@ class CacheHelper {
 abstract class CacheKeys {
   static const String onBoardingVisited = "onBoardingVisited";
   static const String isLogedIn = "isLogedIn";
-  static const String favoriteKeyPrefix = "favorite_";
+  static const String favoriteKeyPrefix = "favorite__";
 }

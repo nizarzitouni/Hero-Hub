@@ -25,10 +25,9 @@ class FavoriteViewBody extends StatelessWidget {
                 if (favorites.isEmpty) {
                   return const EmptyFavoritesWidget();
                 } else {
-                  return ListView.separated(
+                  return ListView.builder(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     itemCount: favorites.length,
-                    separatorBuilder: (context, index) => const Divider(height: 1),
                     itemBuilder: (context, index) {
                       final character = favorites[index];
                       return FavoriteCharacterTile(character: character);

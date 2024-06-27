@@ -25,6 +25,7 @@ mixin _$Character {
   String get description => throw _privateConstructorUsedError;
   String get modified => throw _privateConstructorUsedError;
   CharacterThumbnail get thumbnail => throw _privateConstructorUsedError;
+  List<CharacterUrl> get urls => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $CharacterCopyWith<$Res> {
       String name,
       String description,
       String modified,
-      CharacterThumbnail thumbnail});
+      CharacterThumbnail thumbnail,
+      List<CharacterUrl> urls});
 
   $CharacterThumbnailCopyWith<$Res> get thumbnail;
 }
@@ -65,6 +67,7 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
     Object? description = null,
     Object? modified = null,
     Object? thumbnail = null,
+    Object? urls = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,6 +90,10 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as CharacterThumbnail,
+      urls: null == urls
+          ? _value.urls
+          : urls // ignore: cast_nullable_to_non_nullable
+              as List<CharacterUrl>,
     ) as $Val);
   }
 
@@ -112,7 +119,8 @@ abstract class _$$CharacterImplCopyWith<$Res>
       String name,
       String description,
       String modified,
-      CharacterThumbnail thumbnail});
+      CharacterThumbnail thumbnail,
+      List<CharacterUrl> urls});
 
   @override
   $CharacterThumbnailCopyWith<$Res> get thumbnail;
@@ -134,6 +142,7 @@ class __$$CharacterImplCopyWithImpl<$Res>
     Object? description = null,
     Object? modified = null,
     Object? thumbnail = null,
+    Object? urls = null,
   }) {
     return _then(_$CharacterImpl(
       id: null == id
@@ -156,6 +165,10 @@ class __$$CharacterImplCopyWithImpl<$Res>
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as CharacterThumbnail,
+      urls: null == urls
+          ? _value._urls
+          : urls // ignore: cast_nullable_to_non_nullable
+              as List<CharacterUrl>,
     ));
   }
 }
@@ -168,7 +181,9 @@ class _$CharacterImpl implements _Character {
       required this.name,
       required this.description,
       required this.modified,
-      required this.thumbnail});
+      required this.thumbnail,
+      required final List<CharacterUrl> urls})
+      : _urls = urls;
 
   factory _$CharacterImpl.fromJson(Map<String, dynamic> json) =>
       _$$CharacterImplFromJson(json);
@@ -183,10 +198,17 @@ class _$CharacterImpl implements _Character {
   final String modified;
   @override
   final CharacterThumbnail thumbnail;
+  final List<CharacterUrl> _urls;
+  @override
+  List<CharacterUrl> get urls {
+    if (_urls is EqualUnmodifiableListView) return _urls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_urls);
+  }
 
   @override
   String toString() {
-    return 'Character(id: $id, name: $name, description: $description, modified: $modified, thumbnail: $thumbnail)';
+    return 'Character(id: $id, name: $name, description: $description, modified: $modified, thumbnail: $thumbnail, urls: $urls)';
   }
 
   @override
@@ -201,13 +223,14 @@ class _$CharacterImpl implements _Character {
             (identical(other.modified, modified) ||
                 other.modified == modified) &&
             (identical(other.thumbnail, thumbnail) ||
-                other.thumbnail == thumbnail));
+                other.thumbnail == thumbnail) &&
+            const DeepCollectionEquality().equals(other._urls, _urls));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, description, modified, thumbnail);
+  int get hashCode => Object.hash(runtimeType, id, name, description, modified,
+      thumbnail, const DeepCollectionEquality().hash(_urls));
 
   @JsonKey(ignore: true)
   @override
@@ -229,7 +252,8 @@ abstract class _Character implements Character {
       required final String name,
       required final String description,
       required final String modified,
-      required final CharacterThumbnail thumbnail}) = _$CharacterImpl;
+      required final CharacterThumbnail thumbnail,
+      required final List<CharacterUrl> urls}) = _$CharacterImpl;
 
   factory _Character.fromJson(Map<String, dynamic> json) =
       _$CharacterImpl.fromJson;
@@ -244,6 +268,8 @@ abstract class _Character implements Character {
   String get modified;
   @override
   CharacterThumbnail get thumbnail;
+  @override
+  List<CharacterUrl> get urls;
   @override
   @JsonKey(ignore: true)
   _$$CharacterImplCopyWith<_$CharacterImpl> get copyWith =>
@@ -403,5 +429,159 @@ abstract class _CharacterThumbnail implements CharacterThumbnail {
   @override
   @JsonKey(ignore: true)
   _$$CharacterThumbnailImplCopyWith<_$CharacterThumbnailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CharacterUrl _$CharacterUrlFromJson(Map<String, dynamic> json) {
+  return _CharacterUrl.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CharacterUrl {
+  String get type => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CharacterUrlCopyWith<CharacterUrl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CharacterUrlCopyWith<$Res> {
+  factory $CharacterUrlCopyWith(
+          CharacterUrl value, $Res Function(CharacterUrl) then) =
+      _$CharacterUrlCopyWithImpl<$Res, CharacterUrl>;
+  @useResult
+  $Res call({String type, String url});
+}
+
+/// @nodoc
+class _$CharacterUrlCopyWithImpl<$Res, $Val extends CharacterUrl>
+    implements $CharacterUrlCopyWith<$Res> {
+  _$CharacterUrlCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? url = null,
+  }) {
+    return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CharacterUrlImplCopyWith<$Res>
+    implements $CharacterUrlCopyWith<$Res> {
+  factory _$$CharacterUrlImplCopyWith(
+          _$CharacterUrlImpl value, $Res Function(_$CharacterUrlImpl) then) =
+      __$$CharacterUrlImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String type, String url});
+}
+
+/// @nodoc
+class __$$CharacterUrlImplCopyWithImpl<$Res>
+    extends _$CharacterUrlCopyWithImpl<$Res, _$CharacterUrlImpl>
+    implements _$$CharacterUrlImplCopyWith<$Res> {
+  __$$CharacterUrlImplCopyWithImpl(
+      _$CharacterUrlImpl _value, $Res Function(_$CharacterUrlImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? url = null,
+  }) {
+    return _then(_$CharacterUrlImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CharacterUrlImpl implements _CharacterUrl {
+  _$CharacterUrlImpl({required this.type, required this.url});
+
+  factory _$CharacterUrlImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CharacterUrlImplFromJson(json);
+
+  @override
+  final String type;
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'CharacterUrl(type: $type, url: $url)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CharacterUrlImpl &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.url, url) || other.url == url));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CharacterUrlImplCopyWith<_$CharacterUrlImpl> get copyWith =>
+      __$$CharacterUrlImplCopyWithImpl<_$CharacterUrlImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CharacterUrlImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CharacterUrl implements CharacterUrl {
+  factory _CharacterUrl(
+      {required final String type,
+      required final String url}) = _$CharacterUrlImpl;
+
+  factory _CharacterUrl.fromJson(Map<String, dynamic> json) =
+      _$CharacterUrlImpl.fromJson;
+
+  @override
+  String get type;
+  @override
+  String get url;
+  @override
+  @JsonKey(ignore: true)
+  _$$CharacterUrlImplCopyWith<_$CharacterUrlImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
