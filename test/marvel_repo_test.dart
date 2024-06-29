@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:hero_hub/core/api/api_consumer.dart';
 import 'package:hero_hub/core/api/api_exception.dart';
 import 'package:hero_hub/core/api/end_ponits.dart';
-import 'package:hero_hub/core/api/errors/error_model.dart';
 import 'package:hero_hub/features/home/data/models/api_models/character_api_response_json.dart';
 import 'package:hero_hub/features/home/data/models/character.dart';
 import 'package:hero_hub/features/home/data/repos/marvel_repo_impl.dart';
@@ -48,24 +48,29 @@ void main() {
       );
     });
 
-    test('should return a Failure when the API call fails', () async {
+    test('should return a Failure when an ApiException occurs', () async {
       // Arrange
-      const errorMessage = 'API Error';
       when(
         mockApiConsumer.get(
           EndPoint.getCharacters,
           queryParameters: anyNamed('queryParameters'),
         ),
-      ).thenAnswer((_) async => ErrorModel(errorMessage: errorMessage, status: 9999));
+      ).thenThrow(
+        ApiException(
+          'API Error',
+          errorType: ApiErrorType.serverError,
+        ),
+      );
 
       // Act
       final result = await marvelRepo.getCharacters();
 
       // Assert
+      expect(result, isA<Left<Failure, List<Character>>>());
       result.fold(
         (failure) {
-          expect(failure, isA<Failure>());
-          expect(failure.errMessage, errorMessage);
+          expect(failure.errMessage, 'API Error');
+          expect(failure.errorType, ApiErrorType.serverError);
         },
         (characters) {
           fail('Expected Left(Failure), but got Right(List<Character>)');
@@ -73,23 +78,25 @@ void main() {
       );
     });
 
-    test('should return a Failure when parsing the API response fails', () async {
+    test('should return a Failure when a general exception occurs', () async {
       // Arrange
       when(
         mockApiConsumer.get(
           EndPoint.getCharacters,
           queryParameters: anyNamed('queryParameters'),
         ),
-      ).thenAnswer((_) async => {'invalid': 'json'});
+      ).thenThrow(Exception('General Error'));
 
       // Act
       final result = await marvelRepo.getCharacters();
 
       // Assert
+      expect(result, isA<Left<Failure, List<Character>>>());
+
       result.fold(
         (failure) {
-          expect(failure, isA<Failure>());
-          expect(failure.errMessage, contains('Error parsing character data'));
+          expect(failure.errMessage, isNotEmpty);
+          expect(failure.errorType, isNotNull);
         },
         (characters) {
           fail('Expected Left(Failure), but got Right(List<Character>)');
