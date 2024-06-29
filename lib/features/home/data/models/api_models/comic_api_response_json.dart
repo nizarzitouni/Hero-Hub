@@ -124,7 +124,7 @@ class ComicAPIResponse {
       "offset": 0,
       "limit": 20,
       "total": 2,
-      "count": 2,
+      "count": 0,
       "results": [],
     }
   };

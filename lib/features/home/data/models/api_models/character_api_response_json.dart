@@ -65,7 +65,7 @@ class CharacterAPIResponseJson {
       "offset": 0,
       "limit": 20,
       "total": 1000,
-      "count": 2,
+      "count": 0,
       "results": [],
     }
   };
