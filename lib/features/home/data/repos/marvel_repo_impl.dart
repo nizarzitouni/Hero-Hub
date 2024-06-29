@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:fpdart/fpdart.dart';
-import '../../../../core/api/errors/error_model.dart';
-import '../../../../core/errors/failures.dart';
+import '../../../../core/api/api_exception.dart';
+import '../../../../core/api/errors/handle_exceptions.dart';
 import '../models/api_models/comic_api_response.dart';
 import '../models/character.dart';
 import '../models/comic.dart';
@@ -27,28 +27,26 @@ class MarvelRepoImpl extends MarvelRepo {
   Future<Either<Failure, List<Character>>> getCharacters({int offset = 0, int limit = 10}) async {
     final int timeStamp = DateTime.now().millisecondsSinceEpoch;
     final String hash = _generateHash(timeStamp, MarvelSecrrets.marvelPrivateApiKey, MarvelSecrrets.marvelPublicApiKey);
-
-    final result = await apiConsumer.get(
-      EndPoint.getCharacters,
-      queryParameters: {
-        'ts': timeStamp,
-        'apikey': MarvelSecrrets.marvelPublicApiKey,
-        'hash': hash,
-        'offset': offset,
-        'limit': limit,
-      },
-    );
-
-    if (result is ErrorModel) {
-      return Left(Failure(result.errorMessage));
-    }
-
     try {
+      final result = await apiConsumer.get(
+        EndPoint.getCharacters,
+        queryParameters: {
+          'ts': timeStamp,
+          'apikey': MarvelSecrrets.marvelPublicApiKey,
+          'hash': hash,
+          'offset': offset,
+          'limit': limit,
+        },
+      );
+
       final marvelApiResponse = CharacterApiResponse.fromJson(result);
       final characterList = marvelApiResponse.data.results;
       return Right(characterList);
+    } on ApiException catch (e) {
+      return Left(Failure(e.message, errorType: e.errorType));
     } catch (e) {
-      return Left(Failure("Error parsing character data: ${e.toString()}"));
+      final apiException = HandleExceptions.handleExceptions(e);
+      return Left(Failure(apiException.message, errorType: apiException.errorType));
     }
   }
 
@@ -57,26 +55,25 @@ class MarvelRepoImpl extends MarvelRepo {
     final int timeStamp = DateTime.now().millisecondsSinceEpoch;
     final String hash = _generateHash(timeStamp, MarvelSecrrets.marvelPrivateApiKey, MarvelSecrrets.marvelPublicApiKey);
 
-    final result = await apiConsumer.get(
-      '${EndPoint.getCharacters}/$characterId/comics',
-      queryParameters: {
-        'ts': timeStamp,
-        'apikey': MarvelSecrrets.marvelPublicApiKey,
-        'hash': hash,
-        'offset': offset,
-        'limit': limit,
-      },
-    );
-
-    if (result is ErrorModel) {
-      return Left(Failure(result.errorMessage));
-    }
-
     try {
+      final result = await apiConsumer.get(
+        '${EndPoint.getCharacters}/$characterId/comics',
+        queryParameters: {
+          'ts': timeStamp,
+          'apikey': MarvelSecrrets.marvelPublicApiKey,
+          'hash': hash,
+          'offset': offset,
+          'limit': limit,
+        },
+      );
+
       final comicApiResponse = ComicApiResponse.fromJson(result);
       return Right(comicApiResponse.data.results);
+    } on ApiException catch (e) {
+      return Left(Failure(e.message, errorType: e.errorType));
     } catch (e) {
-      return Left(Failure("Error parsing comic data: ${e.toString()}"));
+      final apiException = HandleExceptions.handleExceptions(e);
+      return Left(Failure(apiException.message, errorType: apiException.errorType));
     }
   }
 }

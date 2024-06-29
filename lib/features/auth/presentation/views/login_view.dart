@@ -72,7 +72,7 @@ class _LoginViewState extends State<LoginView> {
                       AuthField(
                         hintText: 'Password',
                         controller: _passwordController,
-                        isObscureText: true,
+                        isObscureText: isObscure,
                         prefixIcon: Icons.lock,
                         suffixIcon: IconButton(
                           icon: Icon(isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined),
