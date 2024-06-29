@@ -1,0 +1,96 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:hero_hub/core/api/api_consumer.dart';
+import 'package:hero_hub/core/api/end_ponits.dart';
+import 'package:hero_hub/core/api/errors/error_model.dart';
+import 'package:hero_hub/core/errors/failures.dart';
+import 'package:hero_hub/features/home/data/models/character.dart';
+import 'package:hero_hub/features/home/data/repos/marvel_repo_impl.dart';
+import 'package:mockito/mockito.dart';
+
+// Mock class for ApiConsumer
+class MockApiConsumer extends Mock implements ApiConsumer {}
+
+void main() {
+  group('MarvelRepoImpl', () {
+    late MarvelRepoImpl marvelRepo;
+    late MockApiConsumer mockApiConsumer;
+
+    setUp(() {
+      mockApiConsumer = MockApiConsumer();
+      marvelRepo = MarvelRepoImpl(mockApiConsumer);
+    });
+
+    test(
+      'should return a list of characters when the call is successful',
+      () async {
+        // Arrange
+        final jsonResponse = {
+          "data": {
+            "results": [
+              {
+                "id": 1,
+                "name": "Character 1",
+                "description": "Description 1",
+                "modified": "2021-01-01T00:00:00Z",
+                "thumbnail": {"path": "http://example.com/image", "extension": "jpg"},
+                "urls": [
+                  {"type": "detail", "url": "http://example.com/detail"}
+                ]
+              },
+              {
+                "id": 2,
+                "name": "Character 2",
+                "description": "Description 2",
+                "modified": "2021-01-02T00:00:00Z",
+                "thumbnail": {"path": "http://example.com/image", "extension": "jpg"},
+                "urls": [
+                  {"type": "detail", "url": "http://example.com/detail"}
+                ]
+              }
+            ]
+          }
+        };
+        when(
+          mockApiConsumer.get(
+            EndPoint.baseUrl + EndPoint.getCharacters,
+            queryParameters: anyNamed('queryParameters'),
+          ),
+        ).thenAnswer((_) async => jsonResponse);
+
+        // Act
+        final result = await marvelRepo.getCharacters();
+
+        // Assert
+        expect(result.isRight(), true);
+        result.fold(
+          (failure) => fail('Expected Right but got Left with $failure'),
+          (characters) {
+            expect(characters, isA<List<Character>>());
+            expect(characters.length, 2);
+          },
+        );
+      },
+    );
+    test('should return a failure when the call is unsuccessful', () async {
+      // Arrange
+      final errorResponse = ErrorModel(errorMessage: 'Error', status: 9999);
+      when(mockApiConsumer.get(
+        EndPoint.baseUrl + EndPoint.getCharacters,
+        queryParameters: anyNamed('queryParameters'),
+      )).thenAnswer((_) async => errorResponse);
+
+      // Act
+      final result = await marvelRepo.getCharacters();
+
+      // Assert
+      expect(result.isLeft(), true);
+      result.fold(
+        (failure) {
+          expect(failure, isA<Failure>());
+          expect(failure.errMessage, 'Error');
+        },
+        (_) => fail('Expected Left but got Right'),
+      );
+    });
+  });
+}

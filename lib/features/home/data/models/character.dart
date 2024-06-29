@@ -11,6 +11,8 @@ class Character with _$Character {
     required String description,
     required String modified,
     required CharacterThumbnail thumbnail,
+    required String resourceURI,
+    required ComicList comics,
     required List<CharacterUrl> urls,
   }) = _Character;
 
@@ -25,6 +27,28 @@ class CharacterThumbnail with _$CharacterThumbnail {
   }) = _CharacterThumbnail;
 
   factory CharacterThumbnail.fromJson(Map<String, dynamic> json) => _$CharacterThumbnailFromJson(json);
+}
+
+@freezed
+class ComicList with _$ComicList {
+  factory ComicList({
+    required int available,
+    required String collectionURI,
+    required List<ComicSummary> items,
+    required int returned,
+  }) = _ComicList;
+
+  factory ComicList.fromJson(Map<String, dynamic> json) => _$ComicListFromJson(json);
+}
+
+@freezed
+class ComicSummary with _$ComicSummary {
+  factory ComicSummary({
+    required String resourceURI,
+    required String name,
+  }) = _ComicSummary;
+
+  factory ComicSummary.fromJson(Map<String, dynamic> json) => _$ComicSummaryFromJson(json);
 }
 
 @freezed
