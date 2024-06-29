@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hero_hub/core/services/cache_helper.dart';
 
+import '../../../../../core/services/service_locator.dart';
 import '../../../../home/data/models/character.dart';
 
 part 'favorite_state.dart';
@@ -67,5 +68,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       return currentState.favorites.any((character) => character.id == characterId);
     }
     return false;
+  }
+
+  Future<void> deleteAllSavedFavorites() async {
+    await cacheHelper.removeData(key: CacheKeys.favoriteKeyPrefix);
+    emit(const FavoritesState.loaded([]));
+    talker.debug('All Favorites Deleted');
   }
 }
