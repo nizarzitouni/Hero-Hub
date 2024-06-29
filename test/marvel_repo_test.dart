@@ -47,8 +47,58 @@ void main() {
           (characters) {
             expect(characters, isA<List<Character>>());
             expect(characters.length, 2);
+
+            for (final character in characters) {
+              expect(character.id, isA<int>());
+              expect(character.id, greaterThan(0));
+              expect(character.name, isA<String>());
+              expect(character.name, isNotEmpty);
+              expect(character.description, isA<String>());
+              expect(character.modified, isA<String>());
+              expect(character.resourceURI, isA<String>());
+              expect(character.resourceURI, contains('http'));
+
+              // Check ComicList
+              expect(character.comics, isA<ComicList>());
+              expect(character.comics.available, isA<int>());
+              expect(character.comics.returned, isA<int>());
+              expect(character.comics.collectionURI, isA<String>());
+              expect(character.comics.items, isA<List<ComicSummary>>());
+
+              if (character.comics.items.isNotEmpty) {
+                final firstComic = character.comics.items.first;
+                expect(firstComic.resourceURI, isA<String>());
+                expect(firstComic.name, isA<String>());
+              }
+            }
+
+            // Specific checks for the two expected characters
             expect(characters[0].name, 'Character 1');
             expect(characters[1].name, 'Character 2');
+          },
+        );
+      });
+
+      test('should return an empty list of characters when the API returns no results', () async {
+        // Arrange
+        when(
+          mockApiConsumer.get(
+            EndPoint.getCharacters,
+            queryParameters: anyNamed('queryParameters'),
+          ),
+        ).thenAnswer((_) async => CharacterAPIResponseJson.emptryListOfChractersResponse);
+
+        // Act
+        final result = await marvelRepo.getCharacters();
+
+        // Assert
+        expect(result, isA<Right<Failure, List<Character>>>());
+        result.fold(
+          (failure) {
+            fail('Expected Right, but got Left(Failure): ${failure.errMessage}');
+          },
+          (characters) {
+            expect(characters, isEmpty);
           },
         );
       });
@@ -187,6 +237,7 @@ void main() {
           },
         );
       });
+
       test('should return a Failure when an ApiException occurs', () async {
         // Arrange
         when(
