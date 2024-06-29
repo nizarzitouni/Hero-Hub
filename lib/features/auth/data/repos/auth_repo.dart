@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/errors/failures.dart';
+import '../../../../core/api/api_exception.dart';
 import '../models/user_model.dart';
 
 abstract class AuthRepo {

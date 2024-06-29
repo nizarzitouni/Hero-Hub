@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/utility/spacing.dart';
+import '../../../../core/utility/utiles.dart';
 import '../../../../core/widgets/my_buttons.dart';
 
 import '../../../../core/theme/app_pallete.dart';
-import '../../../../core/utility/show_snackbar.dart';
 import '../../../../core/widgets/loader.dart';
 import '../manager/auth_cubit/auth_cubit.dart';
 import '../manager/auth_cubit/auth_state.dart'; // Make sure to import the new state file

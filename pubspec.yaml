@@ -3,7 +3,7 @@ description: "A new Flutter project."
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.0.2+2
 
 environment:
   sdk: ">=3.3.3 <4.0.0"
@@ -53,9 +53,9 @@ dependencies:
   crypto: ^3.0.3
 
 dev_dependencies:
-  flutter_test:
+  flutter_test: #Flutter tests
     sdk: flutter
-
+  mockito: ^5.4.4 #Flutter tests
   build_runner: # dart run build_runner build --delete-conflicting-outputs
   json_serializable: ^6.7.1 # Automatically generate code for converting to and from JSON by annotating Dart classes
   freezed:

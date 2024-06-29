@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
+import '../../../../core/api/api_exception.dart';
+import '../../../../core/api/errors/handle_exceptions.dart';
 import '../models/user_model.dart';
 import 'auth_repo.dart';
 
@@ -14,26 +14,15 @@ class AuthRepoImplWithFirebase extends AuthRepo {
   @override
   Future<Either<Failure, UserModel>> loginWithEmail({required String email, required String password}) async {
     try {
-      try {
-        final userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
-        if (userCredential.user == null) {
-          throw ServerException('User is null !!');
-        }
-        final user = UserModel.fromFirebaseUser(userCredential.user!);
-        return right(user);
-      } on FirebaseAuthException catch (firebaseEx) {
-        if (firebaseEx.code == 'user-not-found') {
-          return left(const Failure('user-not-found'));
-        } else if (firebaseEx.code == 'wrong-password') {
-          return left(const Failure('wrong-password'));
-        } else {
-          return left(Failure('Somthing went wrong: $firebaseEx'));
-        }
-      } catch (ex) {
-        return left(Failure('Exception: $ex'));
+      final userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      if (userCredential.user == null) {
+        throw ApiException('User is null !!', statusCode: 400, errorType: ApiErrorType.unexpectedError);
       }
-    } on Exception catch (e) {
-      return left(Failure('Somthing went wrong: $e'));
+      final user = UserModel.fromFirebaseUser(userCredential.user!);
+      return Right(user);
+    } catch (e) {
+      final apiException = HandleExceptions.handleExceptions(e);
+      return Left(Failure(apiException.message, errorType: apiException.errorType));
     }
   }
 
@@ -45,16 +34,10 @@ class AuthRepoImplWithFirebase extends AuthRepo {
 
       await saveUserToFireStroe(id: user.id, name: name, email: email);
       // await verifyEmail();
-      return right(user);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        return left(const Failure('The password provided is too weak.'));
-      } else if (e.code == 'email-already-in-use') {
-        return left(const Failure('The account already exists for that email.'));
-      }
-      return left(Failure('Exception: $e'));
+      return Right(user);
     } catch (e) {
-      return left(Failure('Somthing went wrong: $e'));
+      final apiException = HandleExceptions.handleExceptions(e);
+      return Left(Failure(apiException.message, errorType: apiException.errorType));
     }
   }
 
