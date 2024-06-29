@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hero_hub/core/theme/app_pallete.dart';
-import 'package:hero_hub/core/utility/show_snackbar.dart';
-import 'package:hero_hub/core/utility/utiles.dart';
 
+import '../../../../../core/utility/utiles.dart';
 import '../../manager/favorite_cubit/favorite_cubit.dart';
 import 'empty_favorites_widget.dart';
 import 'error_fav_screen.dart';
