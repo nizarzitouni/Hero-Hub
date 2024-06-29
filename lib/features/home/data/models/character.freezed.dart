@@ -25,6 +25,8 @@ mixin _$Character {
   String get description => throw _privateConstructorUsedError;
   String get modified => throw _privateConstructorUsedError;
   CharacterThumbnail get thumbnail => throw _privateConstructorUsedError;
+  String get resourceURI => throw _privateConstructorUsedError;
+  ComicList get comics => throw _privateConstructorUsedError;
   List<CharacterUrl> get urls => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,9 +46,12 @@ abstract class $CharacterCopyWith<$Res> {
       String description,
       String modified,
       CharacterThumbnail thumbnail,
+      String resourceURI,
+      ComicList comics,
       List<CharacterUrl> urls});
 
   $CharacterThumbnailCopyWith<$Res> get thumbnail;
+  $ComicListCopyWith<$Res> get comics;
 }
 
 /// @nodoc
@@ -67,6 +72,8 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
     Object? description = null,
     Object? modified = null,
     Object? thumbnail = null,
+    Object? resourceURI = null,
+    Object? comics = null,
     Object? urls = null,
   }) {
     return _then(_value.copyWith(
@@ -90,6 +97,14 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as CharacterThumbnail,
+      resourceURI: null == resourceURI
+          ? _value.resourceURI
+          : resourceURI // ignore: cast_nullable_to_non_nullable
+              as String,
+      comics: null == comics
+          ? _value.comics
+          : comics // ignore: cast_nullable_to_non_nullable
+              as ComicList,
       urls: null == urls
           ? _value.urls
           : urls // ignore: cast_nullable_to_non_nullable
@@ -102,6 +117,14 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   $CharacterThumbnailCopyWith<$Res> get thumbnail {
     return $CharacterThumbnailCopyWith<$Res>(_value.thumbnail, (value) {
       return _then(_value.copyWith(thumbnail: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ComicListCopyWith<$Res> get comics {
+    return $ComicListCopyWith<$Res>(_value.comics, (value) {
+      return _then(_value.copyWith(comics: value) as $Val);
     });
   }
 }
@@ -120,10 +143,14 @@ abstract class _$$CharacterImplCopyWith<$Res>
       String description,
       String modified,
       CharacterThumbnail thumbnail,
+      String resourceURI,
+      ComicList comics,
       List<CharacterUrl> urls});
 
   @override
   $CharacterThumbnailCopyWith<$Res> get thumbnail;
+  @override
+  $ComicListCopyWith<$Res> get comics;
 }
 
 /// @nodoc
@@ -142,6 +169,8 @@ class __$$CharacterImplCopyWithImpl<$Res>
     Object? description = null,
     Object? modified = null,
     Object? thumbnail = null,
+    Object? resourceURI = null,
+    Object? comics = null,
     Object? urls = null,
   }) {
     return _then(_$CharacterImpl(
@@ -165,6 +194,14 @@ class __$$CharacterImplCopyWithImpl<$Res>
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as CharacterThumbnail,
+      resourceURI: null == resourceURI
+          ? _value.resourceURI
+          : resourceURI // ignore: cast_nullable_to_non_nullable
+              as String,
+      comics: null == comics
+          ? _value.comics
+          : comics // ignore: cast_nullable_to_non_nullable
+              as ComicList,
       urls: null == urls
           ? _value._urls
           : urls // ignore: cast_nullable_to_non_nullable
@@ -182,6 +219,8 @@ class _$CharacterImpl implements _Character {
       required this.description,
       required this.modified,
       required this.thumbnail,
+      required this.resourceURI,
+      required this.comics,
       required final List<CharacterUrl> urls})
       : _urls = urls;
 
@@ -198,6 +237,10 @@ class _$CharacterImpl implements _Character {
   final String modified;
   @override
   final CharacterThumbnail thumbnail;
+  @override
+  final String resourceURI;
+  @override
+  final ComicList comics;
   final List<CharacterUrl> _urls;
   @override
   List<CharacterUrl> get urls {
@@ -208,7 +251,7 @@ class _$CharacterImpl implements _Character {
 
   @override
   String toString() {
-    return 'Character(id: $id, name: $name, description: $description, modified: $modified, thumbnail: $thumbnail, urls: $urls)';
+    return 'Character(id: $id, name: $name, description: $description, modified: $modified, thumbnail: $thumbnail, resourceURI: $resourceURI, comics: $comics, urls: $urls)';
   }
 
   @override
@@ -224,13 +267,24 @@ class _$CharacterImpl implements _Character {
                 other.modified == modified) &&
             (identical(other.thumbnail, thumbnail) ||
                 other.thumbnail == thumbnail) &&
+            (identical(other.resourceURI, resourceURI) ||
+                other.resourceURI == resourceURI) &&
+            (identical(other.comics, comics) || other.comics == comics) &&
             const DeepCollectionEquality().equals(other._urls, _urls));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, modified,
-      thumbnail, const DeepCollectionEquality().hash(_urls));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      description,
+      modified,
+      thumbnail,
+      resourceURI,
+      comics,
+      const DeepCollectionEquality().hash(_urls));
 
   @JsonKey(ignore: true)
   @override
@@ -253,6 +307,8 @@ abstract class _Character implements Character {
       required final String description,
       required final String modified,
       required final CharacterThumbnail thumbnail,
+      required final String resourceURI,
+      required final ComicList comics,
       required final List<CharacterUrl> urls}) = _$CharacterImpl;
 
   factory _Character.fromJson(Map<String, dynamic> json) =
@@ -268,6 +324,10 @@ abstract class _Character implements Character {
   String get modified;
   @override
   CharacterThumbnail get thumbnail;
+  @override
+  String get resourceURI;
+  @override
+  ComicList get comics;
   @override
   List<CharacterUrl> get urls;
   @override
@@ -429,6 +489,371 @@ abstract class _CharacterThumbnail implements CharacterThumbnail {
   @override
   @JsonKey(ignore: true)
   _$$CharacterThumbnailImplCopyWith<_$CharacterThumbnailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ComicList _$ComicListFromJson(Map<String, dynamic> json) {
+  return _ComicList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ComicList {
+  int get available => throw _privateConstructorUsedError;
+  String get collectionURI => throw _privateConstructorUsedError;
+  List<ComicSummary> get items => throw _privateConstructorUsedError;
+  int get returned => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ComicListCopyWith<ComicList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ComicListCopyWith<$Res> {
+  factory $ComicListCopyWith(ComicList value, $Res Function(ComicList) then) =
+      _$ComicListCopyWithImpl<$Res, ComicList>;
+  @useResult
+  $Res call(
+      {int available,
+      String collectionURI,
+      List<ComicSummary> items,
+      int returned});
+}
+
+/// @nodoc
+class _$ComicListCopyWithImpl<$Res, $Val extends ComicList>
+    implements $ComicListCopyWith<$Res> {
+  _$ComicListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? available = null,
+    Object? collectionURI = null,
+    Object? items = null,
+    Object? returned = null,
+  }) {
+    return _then(_value.copyWith(
+      available: null == available
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as int,
+      collectionURI: null == collectionURI
+          ? _value.collectionURI
+          : collectionURI // ignore: cast_nullable_to_non_nullable
+              as String,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ComicSummary>,
+      returned: null == returned
+          ? _value.returned
+          : returned // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ComicListImplCopyWith<$Res>
+    implements $ComicListCopyWith<$Res> {
+  factory _$$ComicListImplCopyWith(
+          _$ComicListImpl value, $Res Function(_$ComicListImpl) then) =
+      __$$ComicListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int available,
+      String collectionURI,
+      List<ComicSummary> items,
+      int returned});
+}
+
+/// @nodoc
+class __$$ComicListImplCopyWithImpl<$Res>
+    extends _$ComicListCopyWithImpl<$Res, _$ComicListImpl>
+    implements _$$ComicListImplCopyWith<$Res> {
+  __$$ComicListImplCopyWithImpl(
+      _$ComicListImpl _value, $Res Function(_$ComicListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? available = null,
+    Object? collectionURI = null,
+    Object? items = null,
+    Object? returned = null,
+  }) {
+    return _then(_$ComicListImpl(
+      available: null == available
+          ? _value.available
+          : available // ignore: cast_nullable_to_non_nullable
+              as int,
+      collectionURI: null == collectionURI
+          ? _value.collectionURI
+          : collectionURI // ignore: cast_nullable_to_non_nullable
+              as String,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ComicSummary>,
+      returned: null == returned
+          ? _value.returned
+          : returned // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ComicListImpl implements _ComicList {
+  _$ComicListImpl(
+      {required this.available,
+      required this.collectionURI,
+      required final List<ComicSummary> items,
+      required this.returned})
+      : _items = items;
+
+  factory _$ComicListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ComicListImplFromJson(json);
+
+  @override
+  final int available;
+  @override
+  final String collectionURI;
+  final List<ComicSummary> _items;
+  @override
+  List<ComicSummary> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
+  @override
+  final int returned;
+
+  @override
+  String toString() {
+    return 'ComicList(available: $available, collectionURI: $collectionURI, items: $items, returned: $returned)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ComicListImpl &&
+            (identical(other.available, available) ||
+                other.available == available) &&
+            (identical(other.collectionURI, collectionURI) ||
+                other.collectionURI == collectionURI) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.returned, returned) ||
+                other.returned == returned));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, available, collectionURI,
+      const DeepCollectionEquality().hash(_items), returned);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ComicListImplCopyWith<_$ComicListImpl> get copyWith =>
+      __$$ComicListImplCopyWithImpl<_$ComicListImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ComicListImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ComicList implements ComicList {
+  factory _ComicList(
+      {required final int available,
+      required final String collectionURI,
+      required final List<ComicSummary> items,
+      required final int returned}) = _$ComicListImpl;
+
+  factory _ComicList.fromJson(Map<String, dynamic> json) =
+      _$ComicListImpl.fromJson;
+
+  @override
+  int get available;
+  @override
+  String get collectionURI;
+  @override
+  List<ComicSummary> get items;
+  @override
+  int get returned;
+  @override
+  @JsonKey(ignore: true)
+  _$$ComicListImplCopyWith<_$ComicListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ComicSummary _$ComicSummaryFromJson(Map<String, dynamic> json) {
+  return _ComicSummary.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ComicSummary {
+  String get resourceURI => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ComicSummaryCopyWith<ComicSummary> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ComicSummaryCopyWith<$Res> {
+  factory $ComicSummaryCopyWith(
+          ComicSummary value, $Res Function(ComicSummary) then) =
+      _$ComicSummaryCopyWithImpl<$Res, ComicSummary>;
+  @useResult
+  $Res call({String resourceURI, String name});
+}
+
+/// @nodoc
+class _$ComicSummaryCopyWithImpl<$Res, $Val extends ComicSummary>
+    implements $ComicSummaryCopyWith<$Res> {
+  _$ComicSummaryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? resourceURI = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      resourceURI: null == resourceURI
+          ? _value.resourceURI
+          : resourceURI // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ComicSummaryImplCopyWith<$Res>
+    implements $ComicSummaryCopyWith<$Res> {
+  factory _$$ComicSummaryImplCopyWith(
+          _$ComicSummaryImpl value, $Res Function(_$ComicSummaryImpl) then) =
+      __$$ComicSummaryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String resourceURI, String name});
+}
+
+/// @nodoc
+class __$$ComicSummaryImplCopyWithImpl<$Res>
+    extends _$ComicSummaryCopyWithImpl<$Res, _$ComicSummaryImpl>
+    implements _$$ComicSummaryImplCopyWith<$Res> {
+  __$$ComicSummaryImplCopyWithImpl(
+      _$ComicSummaryImpl _value, $Res Function(_$ComicSummaryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? resourceURI = null,
+    Object? name = null,
+  }) {
+    return _then(_$ComicSummaryImpl(
+      resourceURI: null == resourceURI
+          ? _value.resourceURI
+          : resourceURI // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ComicSummaryImpl implements _ComicSummary {
+  _$ComicSummaryImpl({required this.resourceURI, required this.name});
+
+  factory _$ComicSummaryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ComicSummaryImplFromJson(json);
+
+  @override
+  final String resourceURI;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'ComicSummary(resourceURI: $resourceURI, name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ComicSummaryImpl &&
+            (identical(other.resourceURI, resourceURI) ||
+                other.resourceURI == resourceURI) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, resourceURI, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ComicSummaryImplCopyWith<_$ComicSummaryImpl> get copyWith =>
+      __$$ComicSummaryImplCopyWithImpl<_$ComicSummaryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ComicSummaryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ComicSummary implements ComicSummary {
+  factory _ComicSummary(
+      {required final String resourceURI,
+      required final String name}) = _$ComicSummaryImpl;
+
+  factory _ComicSummary.fromJson(Map<String, dynamic> json) =
+      _$ComicSummaryImpl.fromJson;
+
+  @override
+  String get resourceURI;
+  @override
+  String get name;
+  @override
+  @JsonKey(ignore: true)
+  _$$ComicSummaryImplCopyWith<_$ComicSummaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -14,6 +14,8 @@ _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
       modified: json['modified'] as String,
       thumbnail: CharacterThumbnail.fromJson(
           json['thumbnail'] as Map<String, dynamic>),
+      resourceURI: json['resourceURI'] as String,
+      comics: ComicList.fromJson(json['comics'] as Map<String, dynamic>),
       urls: (json['urls'] as List<dynamic>)
           .map((e) => CharacterUrl.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -26,6 +28,8 @@ Map<String, dynamic> _$$CharacterImplToJson(_$CharacterImpl instance) =>
       'description': instance.description,
       'modified': instance.modified,
       'thumbnail': instance.thumbnail,
+      'resourceURI': instance.resourceURI,
+      'comics': instance.comics,
       'urls': instance.urls,
     };
 
@@ -41,6 +45,36 @@ Map<String, dynamic> _$$CharacterThumbnailImplToJson(
     <String, dynamic>{
       'path': instance.path,
       'extension': instance.extension,
+    };
+
+_$ComicListImpl _$$ComicListImplFromJson(Map<String, dynamic> json) =>
+    _$ComicListImpl(
+      available: (json['available'] as num).toInt(),
+      collectionURI: json['collectionURI'] as String,
+      items: (json['items'] as List<dynamic>)
+          .map((e) => ComicSummary.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      returned: (json['returned'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$ComicListImplToJson(_$ComicListImpl instance) =>
+    <String, dynamic>{
+      'available': instance.available,
+      'collectionURI': instance.collectionURI,
+      'items': instance.items,
+      'returned': instance.returned,
+    };
+
+_$ComicSummaryImpl _$$ComicSummaryImplFromJson(Map<String, dynamic> json) =>
+    _$ComicSummaryImpl(
+      resourceURI: json['resourceURI'] as String,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$ComicSummaryImplToJson(_$ComicSummaryImpl instance) =>
+    <String, dynamic>{
+      'resourceURI': instance.resourceURI,
+      'name': instance.name,
     };
 
 _$CharacterUrlImpl _$$CharacterUrlImplFromJson(Map<String, dynamic> json) =>
