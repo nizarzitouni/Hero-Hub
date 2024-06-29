@@ -137,10 +137,56 @@ void main() {
             expect(comics, isA<List<Comic>>());
             expect(comics.length, greaterThan(0));
             expect(comics[0].id, testCharacterId);
+
+            // More specific assertions about the comic data
+            final firstComic = comics.first;
+
+            // Check basic properties
+            expect(firstComic.id, isA<int>());
+            expect(firstComic.id, greaterThan(0));
+            expect(firstComic.title, isA<String>());
+            expect(firstComic.title, isNotEmpty);
+
+            // Check description (it's optional in your model)
+            expect(firstComic.description, anyOf(isA<String>(), isNull));
+
+            // Check thumbnail
+            expect(firstComic.thumbnail, isA<Thumbnail>());
+            expect(firstComic.thumbnail.path, isA<String>());
+            expect(firstComic.thumbnail.path, isNotEmpty);
+            expect(firstComic.thumbnail.extension, isA<String>());
+            expect(firstComic.thumbnail.extension, isNotEmpty);
+
+            // Optional: Check if the thumbnail URL is properly formed
+            final thumbnailUrl = '${firstComic.thumbnail.path}.${firstComic.thumbnail.extension}';
+            expect(thumbnailUrl, contains('http'));
           },
         );
       });
 
+      test('should return an empty list of comics when the API returns no results', () async {
+        // Arrange
+        when(
+          mockApiConsumer.get(
+            '${EndPoint.getCharacters}/$testCharacterId/comics',
+            queryParameters: anyNamed('queryParameters'),
+          ),
+        ).thenAnswer((_) async => ComicAPIResponse.emptyListOfComicsResponse);
+
+        // Act
+        final result = await marvelRepo.getCharacterComics(testCharacterId);
+
+        // Assert
+        expect(result, isA<Right<Failure, List<Comic>>>());
+        result.fold(
+          (failure) {
+            fail('Expected Right, but got Left(Failure): ${failure.errMessage}');
+          },
+          (comics) {
+            expect(comics, isEmpty);
+          },
+        );
+      });
       test('should return a Failure when an ApiException occurs', () async {
         // Arrange
         when(
