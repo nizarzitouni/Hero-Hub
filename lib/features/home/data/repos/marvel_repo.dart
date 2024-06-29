@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
+import '../../../../core/api/api_exception.dart';
 import '../models/character.dart';
 
-import '../../../../core/errors/failures.dart';
 import '../models/comic.dart';
 
 abstract class MarvelRepo {

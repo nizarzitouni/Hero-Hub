@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/utility/spacing.dart';
+import '../../../../core/utility/utiles.dart';
 import '../functions/user_loged_in.dart';
 
 import '../../../../core/routes/routes.dart';
 import '../../../../core/theme/app_pallete.dart';
-import '../../../../core/utility/show_snackbar.dart';
 import '../../../../core/widgets/loader.dart';
 import '../../../../core/widgets/my_buttons.dart';
 import '../manager/auth_cubit/auth_cubit.dart';
@@ -72,7 +72,7 @@ class _LoginViewState extends State<LoginView> {
                       AuthField(
                         hintText: 'Password',
                         controller: _passwordController,
-                        isObscureText: true,
+                        isObscureText: isObscure,
                         prefixIcon: Icons.lock,
                         suffixIcon: IconButton(
                           icon: Icon(isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined),

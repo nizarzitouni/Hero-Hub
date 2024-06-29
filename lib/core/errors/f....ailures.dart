@@ -1,7 +1,7 @@
-class Failure {
+class Failuress {
   final String errMessage;
 
-  const Failure(this.errMessage);
+  const Failuress(this.errMessage);
 }
 
 // class ServerFailure extends Failure {
