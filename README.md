@@ -12,6 +12,18 @@ Marvel Hero Hub App is an interactive application that allows users to explore a
 - **Detailed Hero Information**: Access comprehensive details about each Marvel character.
 - **Regular Updates**: Stay updated with the latest Marvel news.
 
+## Screenshots
+
+Here are some screenshots of the Hero Hub app:
+
+<p align="center">
+  <img src="screenshots/flutter_01.png" width="150" alt="Onboarding Screen">
+  <img src="screenshots/flutter_02.png" width="150" alt="Home Screen">
+  <img src="screenshots/flutter_03.png" width="150" alt="Hero Details">
+  <img src="screenshots/flutter_04.png" width="150" alt="Authentication">
+  <img src="screenshots/flutter_05.png" width="150" alt="Updates Screen">
+</p>
+
 ## Installation
 
 To run this app on your local machine, follow these steps:
